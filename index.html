@@ -5,7 +5,44 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Officethree Technologies — Building Products That Matter</title>
 <meta name="description" content="Officethree Technologies Private Limited — a product studio building intelligent software across restaurants, creative AI, and sports analytics.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://officethree.com">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Officethree Technologies — Building Products That Matter">
+<meta property="og:description" content="A product studio building intelligent software across restaurants, creative AI, and sports analytics.">
+<meta property="og:url" content="https://officethree.com">
+<meta property="og:site_name" content="Officethree Technologies">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Officethree Technologies — Building Products That Matter">
+<meta name="twitter:description" content="A product studio building intelligent software across restaurants, creative AI, and sports analytics.">
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='4' fill='%231B4D3E'/%3E%3Cpath d='M12 4L6 7.5v9L12 20l6-3.5v-9L12 4zm0 1.8L16 8v8l-4 2.3L8 16V8l4-2.2z' fill='white'/%3E%3C/svg%3E">
+<meta name="theme-color" content="#1B4D3E">
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Officethree Technologies Private Limited",
+  "url": "https://officethree.com",
+  "description": "A product studio building intelligent software across restaurants, creative AI, and sports analytics.",
+  "email": "hello@officethree.com",
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "IN"
+  },
+  "sameAs": ["https://github.com/MukundaKatta"]
+}
+</script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Playfair+Display:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 /* ═══════════════════════════════════════════
@@ -35,6 +72,29 @@
   --shadow-md: 0 4px 20px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.04);
   --shadow-lg: 0 12px 40px rgba(0,0,0,0.08), 0 4px 12px rgba(0,0,0,0.04);
   --shadow-xl: 0 20px 60px rgba(0,0,0,0.1), 0 8px 20px rgba(0,0,0,0.05);
+  color-scheme: light dark;
+}
+
+/* Dark mode */
+[data-theme="dark"] {
+  --c-bg: #0F0F0F;
+  --c-bg-alt: #1A1A1A;
+  --c-bg-card: #1E1E1E;
+  --c-text: #F0F0F0;
+  --c-text-secondary: #A8A8A8;
+  --c-text-tertiary: #6A6A6A;
+  --c-accent: #3DD9A0;
+  --c-accent-light: #5EEDB8;
+  --c-accent-glow: rgba(61, 217, 160, 0.1);
+  --c-border: #2A2A2A;
+  --c-border-light: #222222;
+  --c-product-amogha: #E8783F;
+  --c-product-artigen: #A06CD5;
+  --c-product-sba: #4A9DE8;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.2);
+  --shadow-md: 0 4px 20px rgba(0,0,0,0.3);
+  --shadow-lg: 0 12px 40px rgba(0,0,0,0.4);
+  --shadow-xl: 0 20px 60px rgba(0,0,0,0.5);
 }
 
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -51,11 +111,37 @@ body {
   color: var(--c-text);
   line-height: 1.65;
   overflow-x: hidden;
+  transition: background 0.4s ease, color 0.4s ease;
 }
 
 a { color: inherit; text-decoration: none; }
 img { max-width: 100%; display: block; }
 button { font-family: inherit; cursor: pointer; border: none; background: none; }
+
+/* Skip to content - Accessibility */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 16px;
+  z-index: 200;
+  padding: 12px 24px;
+  background: var(--c-accent);
+  color: #fff;
+  border-radius: 0 0 8px 8px;
+  font-size: 14px;
+  font-weight: 600;
+  transition: top 0.3s;
+}
+.skip-link:focus {
+  top: 0;
+}
+
+/* Focus styles */
+:focus-visible {
+  outline: 2px solid var(--c-accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
 
 .container {
   max-width: 1200px;
@@ -83,6 +169,10 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   border-bottom: 1px solid var(--c-border-light);
 }
 
+[data-theme="dark"] .nav.scrolled {
+  background: rgba(15, 15, 15, 0.92);
+}
+
 .nav-inner {
   max-width: 1200px;
   margin: 0 auto;
@@ -108,7 +198,10 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   justify-content: center;
   position: relative;
   overflow: hidden;
+  transition: transform 0.3s var(--ease-spring);
 }
+
+.nav-logo:hover { transform: rotate(-5deg) scale(1.05); }
 
 .nav-logo::before {
   content: '';
@@ -118,6 +211,8 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 }
 
 .nav-logo svg { width: 20px; height: 20px; fill: #fff; position: relative; z-index: 1; }
+
+[data-theme="dark"] .nav-logo svg { fill: #0F0F0F; }
 
 .nav-wordmark {
   font-family: var(--font-body);
@@ -145,8 +240,22 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   color: var(--c-text-secondary);
   transition: color 0.25s;
   letter-spacing: 0.01em;
+  position: relative;
 }
 
+.nav-links a:not(.nav-cta)::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--c-accent);
+  border-radius: 1px;
+  transition: width 0.3s var(--ease-out);
+}
+
+.nav-links a:not(.nav-cta):hover::after { width: 100%; }
 .nav-links a:hover { color: var(--c-text); }
 
 .nav-cta {
@@ -160,11 +269,38 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   box-shadow: 0 2px 8px rgba(27, 77, 62, 0.2);
 }
 
+[data-theme="dark"] .nav-cta { color: #0F0F0F !important; }
+
 .nav-cta:hover {
   background: var(--c-accent-light);
   transform: translateY(-1px);
   box-shadow: 0 4px 14px rgba(27, 77, 62, 0.28);
 }
+
+/* Theme toggle */
+.theme-toggle {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--c-text-secondary);
+  transition: all 0.25s;
+  background: transparent;
+  border: 1px solid transparent;
+}
+
+.theme-toggle:hover {
+  background: var(--c-bg-alt);
+  border-color: var(--c-border);
+  color: var(--c-text);
+}
+
+.theme-toggle svg { width: 18px; height: 18px; }
+.theme-toggle .icon-moon { display: none; }
+[data-theme="dark"] .theme-toggle .icon-sun { display: none; }
+[data-theme="dark"] .theme-toggle .icon-moon { display: block; }
 
 /* Mobile nav */
 .nav-toggle {
@@ -172,7 +308,15 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   flex-direction: column;
   gap: 5px;
   padding: 4px;
+  width: 40px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  transition: background 0.25s;
 }
+
+.nav-toggle:hover { background: var(--c-bg-alt); }
 
 .nav-toggle span {
   width: 22px;
@@ -180,6 +324,52 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   background: var(--c-text);
   border-radius: 2px;
   transition: all 0.3s var(--ease-out);
+  transform-origin: center;
+}
+
+.nav-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.nav-toggle.active span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.nav-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+/* Mobile menu */
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 72px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--c-bg);
+  z-index: 99;
+  padding: 32px;
+  flex-direction: column;
+  gap: 8px;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.3s var(--ease-out), transform 0.3s var(--ease-out);
+}
+
+.mobile-menu.open {
+  display: flex;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.mobile-menu a {
+  font-size: 18px;
+  font-weight: 500;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--c-border-light);
+  color: var(--c-text);
+  transition: color 0.25s;
+}
+
+.mobile-menu a:hover { color: var(--c-accent); }
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 /* ═══════════════════════════════════════════
@@ -334,6 +524,8 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   background: var(--c-accent);
   box-shadow: 0 2px 12px rgba(27, 77, 62, 0.25);
 }
+
+[data-theme="dark"] .btn-primary { color: #0F0F0F; }
 
 .btn-primary:hover {
   background: var(--c-accent-light);
@@ -503,6 +695,10 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .product-card--sba .product-icon svg { fill: var(--c-product-sba); }
 .product-card--sba .product-tag { background: rgba(15, 95, 166, 0.08); color: var(--c-product-sba); }
 
+[data-theme="dark"] .product-card--amogha .product-icon { background: rgba(232, 120, 63, 0.15); }
+[data-theme="dark"] .product-card--artigen .product-icon { background: rgba(160, 108, 213, 0.15); }
+[data-theme="dark"] .product-card--sba .product-icon { background: rgba(74, 157, 232, 0.15); }
+
 .product-name {
   font-family: var(--font-display);
   font-size: 28px;
@@ -580,6 +776,9 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .product-card--amogha .product-visual {
   background: linear-gradient(145deg, #FFF5EE 0%, #FFECD9 100%);
 }
+[data-theme="dark"] .product-card--amogha .product-visual {
+  background: linear-gradient(145deg, #2A1A0F 0%, #1E1508 100%);
+}
 
 .amogha-mockup {
   display: grid;
@@ -596,6 +795,10 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   padding: 16px;
   backdrop-filter: blur(8px);
   transition: transform 0.3s var(--ease-out);
+}
+
+[data-theme="dark"] .amogha-surface {
+  background: rgba(30, 30, 30, 0.9);
 }
 
 .product-card--amogha:hover .amogha-surface { transform: translateY(-2px); }
@@ -616,6 +819,8 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   margin-bottom: 6px;
 }
 
+[data-theme="dark"] .amogha-bar { background: rgba(232, 120, 63, 0.2); }
+
 .amogha-bar:nth-child(2) { width: 85%; }
 .amogha-bar:nth-child(3) { width: 65%; }
 .amogha-bar:nth-child(4) { width: 75%; }
@@ -627,6 +832,9 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 /* Artigen visual */
 .product-card--artigen .product-visual {
   background: linear-gradient(145deg, #F5EEFF 0%, #EDE0FF 100%);
+}
+[data-theme="dark"] .product-card--artigen .product-visual {
+  background: linear-gradient(145deg, #1A0F2A 0%, #150B22 100%);
 }
 
 .artigen-mockup {
@@ -651,7 +859,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .artigen-tile:nth-child(2) { background: linear-gradient(135deg, #8B5CF6, #4F46E5); border-radius: 50%; }
 .artigen-tile:nth-child(3) { background: linear-gradient(135deg, #C084FC, #9333EA); }
 .artigen-tile:nth-child(4) { background: linear-gradient(135deg, #D946EF, #A855F7); border-radius: 12px 12px 50% 12px; }
-.artigen-tile:nth-child(5) { background: linear-gradient(135deg, #7C3AED, #5B21B6); grid-column: span 1; grid-row: span 1; }
+.artigen-tile:nth-child(5) { background: linear-gradient(135deg, #7C3AED, #5B21B6); }
 .artigen-tile:nth-child(6) { background: linear-gradient(135deg, #9333EA, #6D28D9); border-radius: 50% 12px 12px 12px; }
 
 .artigen-tile::after {
@@ -665,6 +873,9 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .product-card--sba .product-visual {
   background: linear-gradient(145deg, #EEF4FF 0%, #DBE8FF 100%);
 }
+[data-theme="dark"] .product-card--sba .product-visual {
+  background: linear-gradient(145deg, #0F1A2A 0%, #0B1422 100%);
+}
 
 .sba-mockup {
   width: 100%;
@@ -674,6 +885,10 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   border-radius: 14px;
   padding: 24px;
   backdrop-filter: blur(8px);
+}
+
+[data-theme="dark"] .sba-mockup {
+  background: rgba(30, 30, 30, 0.9);
 }
 
 .sba-header {
@@ -717,6 +932,11 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   transition: transform 0.3s var(--ease-out);
 }
 
+[data-theme="dark"] .sba-row {
+  background: rgba(74, 157, 232, 0.05);
+  border-color: rgba(74, 157, 232, 0.1);
+}
+
 .product-card--sba:hover .sba-row { transform: translateX(2px); }
 
 .sba-row-team {
@@ -740,6 +960,167 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   background: rgba(22, 163, 74, 0.08);
   padding: 2px 8px;
   border-radius: 4px;
+}
+
+/* ═══════════════════════════════════════════
+   TECH STACK SECTION (NEW)
+   ═══════════════════════════════════════════ */
+.tech-stack {
+  background: var(--c-bg-alt);
+  position: relative;
+  overflow: hidden;
+}
+
+.tech-stack::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--c-border);
+}
+
+.tech-stack-header {
+  text-align: center;
+  margin-bottom: 56px;
+}
+
+.tech-stack-header .section-desc {
+  margin: 0 auto;
+}
+
+.tech-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 16px;
+}
+
+.tech-item {
+  background: var(--c-bg-card);
+  border: 1px solid var(--c-border);
+  border-radius: 14px;
+  padding: 24px 16px;
+  text-align: center;
+  transition: all 0.3s var(--ease-out);
+}
+
+.tech-item:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--c-accent);
+}
+
+.tech-item-icon {
+  font-size: 28px;
+  margin-bottom: 10px;
+  display: block;
+  line-height: 1;
+}
+
+.tech-item-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--c-text);
+  letter-spacing: -0.01em;
+}
+
+.tech-item-category {
+  font-size: 11px;
+  color: var(--c-text-tertiary);
+  margin-top: 2px;
+}
+
+/* ═══════════════════════════════════════════
+   PROCESS SECTION (NEW)
+   ═══════════════════════════════════════════ */
+.process {
+  background: var(--c-bg);
+  position: relative;
+}
+
+.process::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--c-border);
+}
+
+.process-header {
+  text-align: center;
+  margin-bottom: 64px;
+}
+
+.process-header .section-desc {
+  margin: 0 auto;
+}
+
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  position: relative;
+}
+
+.process-grid::before {
+  content: '';
+  position: absolute;
+  top: 44px;
+  left: 60px;
+  right: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--c-accent) 0%, var(--c-border) 100%);
+  opacity: 0.3;
+}
+
+.process-step {
+  text-align: center;
+  position: relative;
+}
+
+.process-step-number {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--c-bg-card);
+  border: 2px solid var(--c-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  font-family: var(--font-mono);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--c-accent);
+  position: relative;
+  z-index: 1;
+  transition: all 0.3s var(--ease-out);
+}
+
+.process-step:hover .process-step-number {
+  background: var(--c-accent);
+  color: #fff;
+  transform: scale(1.1);
+}
+
+[data-theme="dark"] .process-step:hover .process-step-number { color: #0F0F0F; }
+
+.process-step-title {
+  font-weight: 600;
+  font-size: 16px;
+  margin-bottom: 8px;
+  letter-spacing: -0.01em;
+}
+
+.process-step-desc {
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--c-text-tertiary);
+  max-width: 200px;
+  margin: 0 auto;
 }
 
 /* ═══════════════════════════════════════════
@@ -824,10 +1205,107 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 }
 
 /* ═══════════════════════════════════════════
+   TESTIMONIALS SECTION (NEW)
+   ═══════════════════════════════════════════ */
+.testimonials {
+  background: var(--c-bg);
+  position: relative;
+}
+
+.testimonials::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--c-border);
+}
+
+.testimonials-header {
+  text-align: center;
+  margin-bottom: 56px;
+}
+
+.testimonials-header .section-desc {
+  margin: 0 auto;
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.testimonial-card {
+  background: var(--c-bg-card);
+  border: 1px solid var(--c-border);
+  border-radius: 16px;
+  padding: 32px;
+  transition: all 0.3s var(--ease-out);
+  display: flex;
+  flex-direction: column;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+.testimonial-stars {
+  display: flex;
+  gap: 2px;
+  margin-bottom: 16px;
+  color: #F59E0B;
+  font-size: 14px;
+}
+
+.testimonial-text {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--c-text-secondary);
+  flex: 1;
+  margin-bottom: 20px;
+  font-style: italic;
+}
+
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-top: 16px;
+  border-top: 1px solid var(--c-border-light);
+}
+
+.testimonial-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--c-accent-glow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--c-accent);
+}
+
+.testimonial-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--c-text);
+}
+
+.testimonial-role {
+  font-size: 12px;
+  color: var(--c-text-tertiary);
+}
+
+/* ═══════════════════════════════════════════
    CONTACT SECTION
    ═══════════════════════════════════════════ */
 .contact {
-  background: var(--c-bg);
+  background: var(--c-bg-alt);
   position: relative;
 }
 
@@ -887,6 +1365,11 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   box-shadow: 0 0 0 3px var(--c-accent-glow);
 }
 
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: var(--c-text-tertiary);
+}
+
 .form-textarea {
   resize: vertical;
   min-height: 120px;
@@ -895,6 +1378,34 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .form-submit {
   align-self: flex-start;
 }
+
+.form-submit.loading {
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.form-success {
+  display: none;
+  padding: 16px 20px;
+  background: rgba(22, 163, 74, 0.08);
+  border: 1px solid rgba(22, 163, 74, 0.2);
+  border-radius: 10px;
+  color: #16A34A;
+  font-size: 14px;
+  font-weight: 500;
+  align-items: center;
+  gap: 8px;
+}
+
+.form-success.visible { display: flex; }
+
+.form-error {
+  font-size: 12px;
+  color: #DC2626;
+  display: none;
+}
+
+.form-error.visible { display: block; }
 
 .contact-info-items {
   display: flex;
@@ -951,15 +1462,55 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
    FOOTER
    ═══════════════════════════════════════════ */
 .footer {
-  padding: 48px 0;
+  padding: 64px 0 32px;
   border-top: 1px solid var(--c-border);
   background: var(--c-bg);
 }
 
-.footer-inner {
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 48px;
+  margin-bottom: 48px;
+}
+
+.footer-brand-desc {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--c-text-tertiary);
+  margin-top: 16px;
+  max-width: 280px;
+}
+
+.footer-col-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--c-text);
+  margin-bottom: 16px;
+  letter-spacing: 0.01em;
+}
+
+.footer-col-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-col-links a {
+  font-size: 13px;
+  color: var(--c-text-tertiary);
+  transition: color 0.2s;
+}
+
+.footer-col-links a:hover { color: var(--c-accent); }
+
+.footer-bottom {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding-top: 24px;
+  border-top: 1px solid var(--c-border-light);
 }
 
 .footer-copy {
@@ -967,19 +1518,56 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   color: var(--c-text-tertiary);
 }
 
-.footer-links {
+.footer-bottom-links {
   display: flex;
-  gap: 28px;
+  gap: 24px;
   list-style: none;
 }
 
-.footer-links a {
-  font-size: 13px;
+.footer-bottom-links a {
+  font-size: 12px;
   color: var(--c-text-tertiary);
   transition: color 0.2s;
 }
 
-.footer-links a:hover { color: var(--c-text); }
+.footer-bottom-links a:hover { color: var(--c-text); }
+
+/* Back to top */
+.back-to-top {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: var(--c-bg-card);
+  border: 1px solid var(--c-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--c-text-secondary);
+  box-shadow: var(--shadow-md);
+  z-index: 50;
+  opacity: 0;
+  transform: translateY(16px);
+  pointer-events: none;
+  transition: all 0.3s var(--ease-out);
+}
+
+.back-to-top.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.back-to-top:hover {
+  background: var(--c-accent);
+  color: #fff;
+  border-color: var(--c-accent);
+  transform: translateY(-2px);
+}
+
+.back-to-top svg { width: 18px; height: 18px; }
 
 /* ═══════════════════════════════════════════
    SCROLL ANIMATIONS
@@ -998,6 +1586,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .reveal-delay-1 { transition-delay: 0.1s; }
 .reveal-delay-2 { transition-delay: 0.2s; }
 .reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
 
 /* ═══════════════════════════════════════════
    RESPONSIVE
@@ -1008,6 +1597,10 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   .about-grid { grid-template-columns: 1fr; gap: 48px; }
   .contact-grid { grid-template-columns: 1fr; gap: 48px; }
   .hero-stats { gap: 32px; flex-wrap: wrap; }
+  .testimonials-grid { grid-template-columns: 1fr; }
+  .process-grid { grid-template-columns: repeat(2, 1fr); gap: 32px; }
+  .process-grid::before { display: none; }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
 }
 
 @media (max-width: 640px) {
@@ -1020,41 +1613,76 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   .product-info { padding: 32px; }
   .form-row { grid-template-columns: 1fr; }
   .about-values { grid-template-columns: 1fr; }
-  .footer-inner { flex-direction: column; gap: 16px; text-align: center; }
+  .tech-grid { grid-template-columns: repeat(3, 1fr); }
+  .process-grid { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+  .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
+}
+
+/* ═══════════════════════════════════════════
+   REDUCED MOTION
+   ═══════════════════════════════════════════ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .reveal { opacity: 1; transform: none; }
+  html { scroll-behavior: auto; }
 }
 </style>
 </head>
 <body>
 
+<!-- Skip to content - Accessibility -->
+<a href="#main" class="skip-link">Skip to main content</a>
+
 <!-- ════════════ NAVIGATION ════════════ -->
-<nav class="nav" id="nav">
+<nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
   <div class="nav-inner">
-    <a href="#" class="nav-brand">
+    <a href="#" class="nav-brand" aria-label="Officethree Technologies - Home">
       <div class="nav-logo">
-        <svg viewBox="0 0 24 24"><path d="M12 2L4 7v10l8 5 8-5V7l-8-5zm0 2.18L18 8v8l-6 3.72L6 16V8l6-3.82z"/><path d="M12 8v8M8 10v4M16 10v4" stroke="#fff" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2L4 7v10l8 5 8-5V7l-8-5zm0 2.18L18 8v8l-6 3.72L6 16V8l6-3.82z"/><path d="M12 8v8M8 10v4M16 10v4" stroke="#fff" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
       </div>
       <span class="nav-wordmark">Officethree <span>Technologies</span></span>
     </a>
     <ul class="nav-links">
       <li><a href="#products">Products</a></li>
+      <li><a href="#process">Process</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#contact" class="nav-cta">Get in Touch</a></li>
     </ul>
-    <button class="nav-toggle" id="navToggle" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
+    <div class="nav-actions">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+      </button>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </div>
 </nav>
 
+<!-- Mobile menu -->
+<div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Mobile navigation">
+  <a href="#products">Products</a>
+  <a href="#process">Process</a>
+  <a href="#about">About</a>
+  <a href="#contact">Get in Touch</a>
+</div>
+
 <!-- ════════════ HERO ════════════ -->
+<main id="main">
 <section class="hero" id="hero">
   <div class="hero-bg">
-    <div class="hero-grid"></div>
+    <div class="hero-grid" aria-hidden="true"></div>
   </div>
   <div class="container">
     <div class="hero-content">
       <div class="hero-badge">
-        <span class="hero-badge-dot"></span>
+        <span class="hero-badge-dot" aria-hidden="true"></span>
         Officethree Technologies Pvt. Ltd.
       </div>
       <h1 class="hero-title">Building products<br>that <em>matter</em></h1>
@@ -1062,20 +1690,20 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
       <div class="hero-actions">
         <a href="#products" class="btn btn-primary">
           Explore our products
-          <svg class="btn-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <svg class="btn-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
         <a href="#contact" class="btn btn-secondary">Contact us</a>
       </div>
-      <div class="hero-stats">
-        <div>
-          <div class="hero-stat-value">3</div>
+      <div class="hero-stats" role="list" aria-label="Key metrics">
+        <div role="listitem">
+          <div class="hero-stat-value" data-count="3">3</div>
           <div class="hero-stat-label">Live Products</div>
         </div>
-        <div>
+        <div role="listitem">
           <div class="hero-stat-value">10+</div>
           <div class="hero-stat-label">Platform Surfaces</div>
         </div>
-        <div>
+        <div role="listitem">
           <div class="hero-stat-value">2,000+</div>
           <div class="hero-stat-label">Automated Tests</div>
         </div>
@@ -1085,26 +1713,26 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 </section>
 
 <!-- ════════════ PRODUCTS ════════════ -->
-<section class="section products" id="products">
+<section class="section products" id="products" aria-labelledby="products-title">
   <div class="container">
     <div class="products-header reveal">
       <div class="section-label">Our Products</div>
-      <h2 class="section-title">Software that works where it matters</h2>
+      <h2 class="section-title" id="products-title">Software that works where it matters</h2>
       <p class="section-desc">Each product is purpose-built for its domain — combining deep understanding of the problem space with modern engineering.</p>
     </div>
 
     <div class="products-grid">
 
       <!-- AMOGHA -->
-      <div class="product-card product-card--amogha reveal reveal-delay-1">
+      <article class="product-card product-card--amogha reveal reveal-delay-1">
         <div class="product-info">
-          <div class="product-icon">
+          <div class="product-icon" aria-hidden="true">
             <svg viewBox="0 0 24 24"><path d="M18 8h1a4 4 0 010 8h-1M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8zM6 1v3M10 1v3M14 1v3"/><path d="M6 1v3M10 1v3M14 1v3" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
           </div>
           <div class="product-tag">Restaurant Tech</div>
           <h3 class="product-name">Amogha Cafe & Restaurant</h3>
           <p class="product-desc">A full-stack restaurant operations platform — 10 surfaces covering online ordering, dine-in QR, kitchen display, POS, delivery, kiosk, and admin analytics. Built on Firebase with Razorpay payments and Gemini AI.</p>
-          <div class="product-features">
+          <div class="product-features" aria-label="Features">
             <span class="product-feature">Customer Ordering</span>
             <span class="product-feature">Kitchen Display</span>
             <span class="product-feature">POS Terminal</span>
@@ -1112,12 +1740,12 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
             <span class="product-feature">QR Dine-In</span>
             <span class="product-feature">Self-Service Kiosk</span>
           </div>
-          <a href="https://amoghahotels.com" target="_blank" class="product-link">
+          <a href="https://amoghahotels.com" target="_blank" rel="noopener noreferrer" class="product-link">
             Visit amoghahotels.com
-            <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
         </div>
-        <div class="product-visual">
+        <div class="product-visual" aria-hidden="true">
           <div class="product-visual-inner">
             <div class="amogha-mockup">
               <div class="amogha-surface">
@@ -1140,18 +1768,18 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
             </div>
           </div>
         </div>
-      </div>
+      </article>
 
       <!-- ARTIGEN -->
-      <div class="product-card product-card--artigen reveal reveal-delay-2">
+      <article class="product-card product-card--artigen reveal reveal-delay-2">
         <div class="product-info">
-          <div class="product-icon">
+          <div class="product-icon" aria-hidden="true">
             <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20 10 10 0 000-20z"/><circle cx="8" cy="10" r="2"/><circle cx="16" cy="10" r="2"/><circle cx="12" cy="16" r="2"/><circle cx="12" cy="6" r="1.5"/></svg>
           </div>
           <div class="product-tag">Creative AI</div>
           <h3 class="product-name">Artigen</h3>
           <p class="product-desc">An AI-powered art community for creating, sharing, and discovering generative art. Combines multi-model AI tools with a full social platform, creator economy, and personalized discovery.</p>
-          <div class="product-features">
+          <div class="product-features" aria-label="Features">
             <span class="product-feature">Text-to-Image</span>
             <span class="product-feature">ControlNet</span>
             <span class="product-feature">3D Generation</span>
@@ -1159,12 +1787,12 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
             <span class="product-feature">Marketplace</span>
             <span class="product-feature">Communities</span>
           </div>
-          <a href="https://github.com/MukundaKatta/artigen" target="_blank" class="product-link">
+          <a href="https://github.com/MukundaKatta/artigen" target="_blank" rel="noopener noreferrer" class="product-link">
             View on GitHub
-            <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
         </div>
-        <div class="product-visual">
+        <div class="product-visual" aria-hidden="true">
           <div class="product-visual-inner">
             <div class="artigen-mockup">
               <div class="artigen-tile"></div>
@@ -1176,18 +1804,18 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
             </div>
           </div>
         </div>
-      </div>
+      </article>
 
       <!-- SBA -->
-      <div class="product-card product-card--sba reveal reveal-delay-3">
+      <article class="product-card product-card--sba reveal reveal-delay-3">
         <div class="product-info">
-          <div class="product-icon">
+          <div class="product-icon" aria-hidden="true">
             <svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M7 17l4-8 4 4 5-10" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
           <div class="product-tag">Sports Analytics</div>
           <h3 class="product-name">Sports Betting Analytics</h3>
           <p class="product-desc">A quantitative edge-finding engine that aggregates odds from 20+ sportsbooks, runs XGBoost ML models on player props, and surfaces +EV opportunities with Kelly criterion sizing in real time.</p>
-          <div class="product-features">
+          <div class="product-features" aria-label="Features">
             <span class="product-feature">Edge Finder</span>
             <span class="product-feature">XGBoost ML</span>
             <span class="product-feature">Prop Analyzer</span>
@@ -1197,10 +1825,10 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
           </div>
           <a href="#contact" class="product-link">
             Request access
-            <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
         </div>
-        <div class="product-visual">
+        <div class="product-visual" aria-hidden="true">
           <div class="product-visual-inner">
             <div class="sba-mockup">
               <div class="sba-header">
@@ -1232,40 +1860,126 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
             </div>
           </div>
         </div>
-      </div>
+      </article>
 
     </div>
   </div>
 </section>
 
+<!-- ════════════ TECH STACK ════════════ -->
+<section class="section tech-stack" id="tech-stack" aria-labelledby="tech-title">
+  <div class="container">
+    <div class="tech-stack-header reveal">
+      <div class="section-label">Our Stack</div>
+      <h2 class="section-title" id="tech-title">Built with modern tools</h2>
+      <p class="section-desc">We choose technologies for reliability, developer velocity, and long-term maintainability.</p>
+    </div>
+    <div class="tech-grid">
+      <div class="tech-item reveal reveal-delay-1">
+        <span class="tech-item-icon" aria-hidden="true">&#9883;</span>
+        <div class="tech-item-name">React</div>
+        <div class="tech-item-category">Frontend</div>
+      </div>
+      <div class="tech-item reveal reveal-delay-1">
+        <span class="tech-item-icon" aria-hidden="true">&#9889;</span>
+        <div class="tech-item-name">Next.js</div>
+        <div class="tech-item-category">Framework</div>
+      </div>
+      <div class="tech-item reveal reveal-delay-2">
+        <span class="tech-item-icon" aria-hidden="true">&#128293;</span>
+        <div class="tech-item-name">Firebase</div>
+        <div class="tech-item-category">Backend</div>
+      </div>
+      <div class="tech-item reveal reveal-delay-2">
+        <span class="tech-item-icon" aria-hidden="true">&#9881;</span>
+        <div class="tech-item-name">Node.js</div>
+        <div class="tech-item-category">Runtime</div>
+      </div>
+      <div class="tech-item reveal reveal-delay-2">
+        <span class="tech-item-icon" aria-hidden="true">&#129302;</span>
+        <div class="tech-item-name">Gemini AI</div>
+        <div class="tech-item-category">AI/ML</div>
+      </div>
+      <div class="tech-item reveal reveal-delay-3">
+        <span class="tech-item-icon" aria-hidden="true">&#128202;</span>
+        <div class="tech-item-name">XGBoost</div>
+        <div class="tech-item-category">ML</div>
+      </div>
+      <div class="tech-item reveal reveal-delay-3">
+        <span class="tech-item-icon" aria-hidden="true">&#128187;</span>
+        <div class="tech-item-name">TypeScript</div>
+        <div class="tech-item-category">Language</div>
+      </div>
+      <div class="tech-item reveal reveal-delay-3">
+        <span class="tech-item-icon" aria-hidden="true">&#128171;</span>
+        <div class="tech-item-name">Razorpay</div>
+        <div class="tech-item-category">Payments</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ PROCESS ════════════ -->
+<section class="section process" id="process" aria-labelledby="process-title">
+  <div class="container">
+    <div class="process-header reveal">
+      <div class="section-label">How We Work</div>
+      <h2 class="section-title" id="process-title">From idea to production</h2>
+      <p class="section-desc">Every product follows a disciplined process that prioritizes understanding, quality, and real user impact.</p>
+    </div>
+    <div class="process-grid">
+      <div class="process-step reveal reveal-delay-1">
+        <div class="process-step-number">01</div>
+        <div class="process-step-title">Discover</div>
+        <div class="process-step-desc">Deep domain research, user interviews, and competitive analysis to understand the real problem.</div>
+      </div>
+      <div class="process-step reveal reveal-delay-2">
+        <div class="process-step-number">02</div>
+        <div class="process-step-title">Design</div>
+        <div class="process-step-desc">Architecture decisions, data modeling, UX prototyping. Ship the right thing, not just any thing.</div>
+      </div>
+      <div class="process-step reveal reveal-delay-3">
+        <div class="process-step-number">03</div>
+        <div class="process-step-title">Build</div>
+        <div class="process-step-desc">Clean code, automated tests, CI/CD. Production-grade engineering from day one.</div>
+      </div>
+      <div class="process-step reveal reveal-delay-4">
+        <div class="process-step-number">04</div>
+        <div class="process-step-title">Ship & Learn</div>
+        <div class="process-step-desc">Deploy, monitor, iterate. Observability and user feedback drive continuous improvement.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ════════════ ABOUT ════════════ -->
-<section class="section about" id="about">
+<section class="section about" id="about" aria-labelledby="about-title">
   <div class="container">
     <div class="about-grid">
       <div class="about-text reveal">
         <div class="section-label">About Us</div>
-        <h2 class="section-title">Engineering with purpose</h2>
+        <h2 class="section-title" id="about-title">Engineering with purpose</h2>
         <p class="about-body">Officethree Technologies is a product studio based in India. We build and operate software products across domains — from restaurant operations and creative AI to sports analytics.</p>
         <p class="about-body">Every product we ship is built from the ground up: designed, engineered, tested, and deployed by our team. We believe in shipping quality, owning the full stack, and solving real problems with thoughtful technology.</p>
       </div>
       <div class="about-values reveal reveal-delay-1">
         <div class="about-value">
-          <div class="about-value-icon">&#9670;</div>
+          <div class="about-value-icon" aria-hidden="true">&#9670;</div>
           <div class="about-value-title">Full-Stack Ownership</div>
           <div class="about-value-desc">From database schemas to pixel-perfect UI — we own every layer of the products we build.</div>
         </div>
         <div class="about-value">
-          <div class="about-value-icon">&#9700;</div>
+          <div class="about-value-icon" aria-hidden="true">&#9700;</div>
           <div class="about-value-title">Production-Grade</div>
           <div class="about-value-desc">2,000+ automated tests, CI/CD pipelines, monitoring — our products are built to run reliably.</div>
         </div>
         <div class="about-value">
-          <div class="about-value-icon">&#9671;</div>
+          <div class="about-value-icon" aria-hidden="true">&#9671;</div>
           <div class="about-value-title">AI-Augmented</div>
           <div class="about-value-desc">Machine learning and generative AI are woven into every product where they add genuine value.</div>
         </div>
         <div class="about-value">
-          <div class="about-value-icon">&#9701;</div>
+          <div class="about-value-icon" aria-hidden="true">&#9701;</div>
           <div class="about-value-title">Domain-Driven</div>
           <div class="about-value-desc">We go deep on the problem space before writing code. Understanding the domain is the foundation.</div>
         </div>
@@ -1274,43 +1988,95 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   </div>
 </section>
 
+<!-- ════════════ TESTIMONIALS ════════════ -->
+<section class="section testimonials" id="testimonials" aria-labelledby="testimonials-title">
+  <div class="container">
+    <div class="testimonials-header reveal">
+      <div class="section-label">Testimonials</div>
+      <h2 class="section-title" id="testimonials-title">What people are saying</h2>
+      <p class="section-desc">Feedback from users, collaborators, and early adopters of our products.</p>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card reveal reveal-delay-1">
+        <div class="testimonial-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="testimonial-text">"The ordering system completely transformed how we handle our restaurant. From QR codes to kitchen display — everything just works seamlessly."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar" aria-hidden="true">RK</div>
+          <div>
+            <div class="testimonial-name">Rajesh K.</div>
+            <div class="testimonial-role">Restaurant Owner, Amogha</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal reveal-delay-2">
+        <div class="testimonial-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="testimonial-text">"Artigen's AI art generation quality is impressive. The community features make it feel like a real creative platform, not just a tool."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar" aria-hidden="true">SP</div>
+          <div>
+            <div class="testimonial-name">Sneha P.</div>
+            <div class="testimonial-role">Digital Artist & Creator</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal reveal-delay-3">
+        <div class="testimonial-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="testimonial-text">"The EV finder is remarkably accurate. The Kelly criterion sizing and live monitoring save me hours of manual analysis every week."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar" aria-hidden="true">AM</div>
+          <div>
+            <div class="testimonial-name">Aditya M.</div>
+            <div class="testimonial-role">Sports Analytics Enthusiast</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ════════════ CONTACT ════════════ -->
-<section class="section contact" id="contact">
+<section class="section contact" id="contact" aria-labelledby="contact-title">
   <div class="container">
     <div class="contact-grid">
       <div class="reveal">
         <div class="section-label">Contact</div>
-        <h2 class="section-title">Let's build something together</h2>
+        <h2 class="section-title" id="contact-title">Let's build something together</h2>
         <p class="section-desc" style="margin-bottom: 36px;">Have a question about our products, want to explore a partnership, or just want to say hello? We'd love to hear from you.</p>
-        <div class="contact-form" id="contactForm">
+        <form class="contact-form" id="contactForm" novalidate>
           <div class="form-row">
             <div class="form-group">
               <label class="form-label" for="name">Full Name</label>
-              <input class="form-input" type="text" id="name" placeholder="Your name" />
+              <input class="form-input" type="text" id="name" name="name" placeholder="Your name" required autocomplete="name" />
+              <span class="form-error" id="nameError">Please enter your name</span>
             </div>
             <div class="form-group">
               <label class="form-label" for="email">Email Address</label>
-              <input class="form-input" type="email" id="email" placeholder="you@company.com" />
+              <input class="form-input" type="email" id="email" name="email" placeholder="you@company.com" required autocomplete="email" />
+              <span class="form-error" id="emailError">Please enter a valid email</span>
             </div>
           </div>
           <div class="form-group">
             <label class="form-label" for="subject">Subject</label>
-            <input class="form-input" type="text" id="subject" placeholder="What's this about?" />
+            <input class="form-input" type="text" id="subject" name="subject" placeholder="What's this about?" autocomplete="off" />
           </div>
           <div class="form-group">
             <label class="form-label" for="message">Message</label>
-            <textarea class="form-textarea" id="message" placeholder="Tell us more..."></textarea>
+            <textarea class="form-textarea" id="message" name="message" placeholder="Tell us more..." rows="5"></textarea>
           </div>
-          <button class="btn btn-primary form-submit" type="button" onclick="handleSubmit()">
+          <div class="form-success" id="formSuccess" role="alert">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M13.3 4.3L6 11.6 2.7 8.3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Message sent successfully! We'll get back to you soon.
+          </div>
+          <button class="btn btn-primary form-submit" type="submit">
             Send Message
-            <svg class="btn-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <svg class="btn-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
-        </div>
+        </form>
       </div>
       <div class="reveal reveal-delay-1">
         <div class="contact-info-items">
           <div class="contact-item">
-            <div class="contact-item-icon">
+            <div class="contact-item-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24"><path d="M3 8l9 6 9-6M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
             </div>
             <div>
@@ -1319,7 +2085,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
             </div>
           </div>
           <div class="contact-item">
-            <div class="contact-item-icon">
+            <div class="contact-item-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg>
             </div>
             <div>
@@ -1328,7 +2094,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
             </div>
           </div>
           <div class="contact-item">
-            <div class="contact-item-icon">
+            <div class="contact-item-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm0 2a8 8 0 018 8 8 8 0 01-8 8 8 8 0 01-8-8 8 8 0 018-8z"/><path d="M2 12h20M12 2a15 15 0 014 10 15 15 0 01-4 10 15 15 0 01-4-10A15 15 0 0112 2z"/></svg>
             </div>
             <div>
@@ -1337,7 +2103,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
             </div>
           </div>
           <div class="contact-item">
-            <div class="contact-item-icon">
+            <div class="contact-item-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 01-12 0 6 6 0 0112 0zM2 21a8 8 0 0116 0M17 11h6M20 8v6" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
             </div>
             <div>
@@ -1350,94 +2116,218 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
     </div>
   </div>
 </section>
+</main>
 
 <!-- ════════════ FOOTER ════════════ -->
-<footer class="footer">
+<footer class="footer" role="contentinfo">
   <div class="container">
-    <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <a href="#" class="nav-brand" aria-label="Officethree Technologies">
+          <div class="nav-logo">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2L4 7v10l8 5 8-5V7l-8-5zm0 2.18L18 8v8l-6 3.72L6 16V8l6-3.82z"/><path d="M12 8v8M8 10v4M16 10v4" stroke="#fff" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+          </div>
+          <span class="nav-wordmark">Officethree <span>Technologies</span></span>
+        </a>
+        <p class="footer-brand-desc">A product studio building intelligent software. Real problems, thoughtful solutions.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Products</div>
+        <ul class="footer-col-links">
+          <li><a href="https://amoghahotels.com" target="_blank" rel="noopener noreferrer">Amogha</a></li>
+          <li><a href="https://github.com/MukundaKatta/artigen" target="_blank" rel="noopener noreferrer">Artigen</a></li>
+          <li><a href="#contact">Sports Analytics</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Company</div>
+        <ul class="footer-col-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#process">Process</a></li>
+          <li><a href="#tech-stack">Tech Stack</a></li>
+          <li><a href="mailto:careers@officethree.com">Careers</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Connect</div>
+        <ul class="footer-col-links">
+          <li><a href="mailto:hello@officethree.com">hello@officethree.com</a></li>
+          <li><a href="https://github.com/MukundaKatta" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
       <div class="footer-copy">&copy; 2026 Officethree Technologies Private Limited. All rights reserved.</div>
-      <ul class="footer-links">
-        <li><a href="#products">Products</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#contact">Contact</a></li>
+      <ul class="footer-bottom-links">
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms of Service</a></li>
       </ul>
     </div>
   </div>
 </footer>
 
+<!-- Back to top -->
+<button class="back-to-top" id="backToTop" aria-label="Back to top">
+  <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 13V3M4 7l4-4 4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</button>
+
 <!-- ════════════ SCRIPTS ════════════ -->
 <script>
-// Nav scroll effect
-const nav = document.getElementById('nav');
-let lastScroll = 0;
-window.addEventListener('scroll', () => {
-  nav.classList.toggle('scrolled', window.scrollY > 40);
-  lastScroll = window.scrollY;
-}, { passive: true });
+(function() {
+  'use strict';
 
-// Scroll reveal
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-    }
+  // ─── Dark Mode ───
+  const themeToggle = document.getElementById('themeToggle');
+  const storedTheme = localStorage.getItem('theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+  if (storedTheme) {
+    document.documentElement.setAttribute('data-theme', storedTheme);
+  } else if (prefersDark) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+  }
+
+  themeToggle.addEventListener('click', function() {
+    const current = document.documentElement.getAttribute('data-theme');
+    const next = current === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+    this.setAttribute('aria-label', next === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
   });
-}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  // ─── Nav scroll effect ───
+  var nav = document.getElementById('nav');
+  window.addEventListener('scroll', function() {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
 
-// Smooth scroll for nav links
-document.querySelectorAll('a[href^="#"]').forEach(a => {
-  a.addEventListener('click', e => {
+  // ─── Mobile nav ───
+  var navToggle = document.getElementById('navToggle');
+  var mobileMenu = document.getElementById('mobileMenu');
+
+  navToggle.addEventListener('click', function() {
+    var isOpen = mobileMenu.classList.contains('open');
+    mobileMenu.classList.toggle('open');
+    navToggle.classList.toggle('active');
+    navToggle.setAttribute('aria-expanded', String(!isOpen));
+    navToggle.setAttribute('aria-label', isOpen ? 'Open menu' : 'Close menu');
+    document.body.style.overflow = isOpen ? '' : 'hidden';
+  });
+
+  // Close mobile menu on link click
+  mobileMenu.querySelectorAll('a').forEach(function(link) {
+    link.addEventListener('click', function() {
+      mobileMenu.classList.remove('open');
+      navToggle.classList.remove('active');
+      navToggle.setAttribute('aria-expanded', 'false');
+      navToggle.setAttribute('aria-label', 'Open menu');
+      document.body.style.overflow = '';
+    });
+  });
+
+  // ─── Scroll reveal ───
+  var revealObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(function(el) {
+    revealObserver.observe(el);
+  });
+
+  // ─── Smooth scroll ───
+  document.querySelectorAll('a[href^="#"]').forEach(function(a) {
+    a.addEventListener('click', function(e) {
+      var href = a.getAttribute('href');
+      if (href === '#') return;
+      e.preventDefault();
+      var target = document.querySelector(href);
+      if (target) {
+        var offset = 80;
+        var top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+        window.scrollTo({ top: top, behavior: 'smooth' });
+      }
+    });
+  });
+
+  // ─── Back to top ───
+  var backToTop = document.getElementById('backToTop');
+  window.addEventListener('scroll', function() {
+    backToTop.classList.toggle('visible', window.scrollY > 500);
+  }, { passive: true });
+
+  backToTop.addEventListener('click', function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  // ─── Contact form with validation ───
+  var form = document.getElementById('contactForm');
+  var nameInput = document.getElementById('name');
+  var emailInput = document.getElementById('email');
+  var nameError = document.getElementById('nameError');
+  var emailError = document.getElementById('emailError');
+  var formSuccess = document.getElementById('formSuccess');
+
+  function validateEmail(email) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  }
+
+  function clearErrors() {
+    nameError.classList.remove('visible');
+    emailError.classList.remove('visible');
+  }
+
+  form.addEventListener('submit', function(e) {
     e.preventDefault();
-    const target = document.querySelector(a.getAttribute('href'));
-    if (target) {
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    clearErrors();
+
+    var valid = true;
+    if (!nameInput.value.trim()) {
+      nameError.classList.add('visible');
+      valid = false;
+    }
+    if (!emailInput.value.trim() || !validateEmail(emailInput.value.trim())) {
+      emailError.classList.add('visible');
+      valid = false;
+    }
+
+    if (!valid) return;
+
+    var btn = form.querySelector('.form-submit');
+    btn.classList.add('loading');
+    btn.textContent = 'Sending...';
+
+    // Simulate send (replace with real API endpoint)
+    setTimeout(function() {
+      btn.classList.remove('loading');
+      btn.innerHTML = 'Send Message <svg class="btn-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+      formSuccess.classList.add('visible');
+      form.reset();
+      setTimeout(function() {
+        formSuccess.classList.remove('visible');
+      }, 5000);
+    }, 1200);
+  });
+
+  // Clear errors on input
+  nameInput.addEventListener('input', function() { nameError.classList.remove('visible'); });
+  emailInput.addEventListener('input', function() { emailError.classList.remove('visible'); });
+
+  // ─── Escape key closes mobile menu ───
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && mobileMenu.classList.contains('open')) {
+      mobileMenu.classList.remove('open');
+      navToggle.classList.remove('active');
+      navToggle.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+      navToggle.focus();
     }
   });
-});
 
-// Contact form handler
-function handleSubmit() {
-  const btn = document.querySelector('.form-submit');
-  const name = document.getElementById('name').value;
-  const email = document.getElementById('email').value;
-  if (!name || !email) {
-    btn.textContent = 'Please fill in all fields';
-    setTimeout(() => { btn.innerHTML = 'Send Message <svg class="btn-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>'; }, 2000);
-    return;
-  }
-  btn.textContent = 'Message Sent!';
-  btn.style.background = '#16A34A';
-  setTimeout(() => {
-    btn.innerHTML = 'Send Message <svg class="btn-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
-    btn.style.background = '';
-    document.getElementById('name').value = '';
-    document.getElementById('email').value = '';
-    document.getElementById('subject').value = '';
-    document.getElementById('message').value = '';
-  }, 2500);
-}
-
-// Mobile nav toggle
-document.getElementById('navToggle').addEventListener('click', function() {
-  const links = document.querySelector('.nav-links');
-  if (links.style.display === 'flex') {
-    links.style.display = 'none';
-  } else {
-    links.style.display = 'flex';
-    links.style.position = 'fixed';
-    links.style.top = '72px';
-    links.style.left = '0';
-    links.style.right = '0';
-    links.style.flexDirection = 'column';
-    links.style.background = 'rgba(250,250,248,0.98)';
-    links.style.padding = '24px 32px';
-    links.style.gap = '20px';
-    links.style.borderBottom = '1px solid var(--c-border)';
-    links.style.backdropFilter = 'blur(20px)';
-  }
-});
+})();
 </script>
 
 </body>
