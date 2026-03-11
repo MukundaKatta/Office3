@@ -182,6 +182,42 @@ a { color: inherit; text-decoration: none; }
 img { max-width: 100%; display: block; }
 button { font-family: inherit; cursor: pointer; border: none; background: none; }
 
+/* ═══════════════════════════════════════════
+   SCROLL PROGRESS BAR
+   ═══════════════════════════════════════════ */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--c-accent), var(--c-accent-light));
+  z-index: 200;
+  transition: width 0.1s linear;
+  will-change: width;
+}
+
+/* ═══════════════════════════════════════════
+   PAGE LOAD ANIMATION
+   ═══════════════════════════════════════════ */
+.page-loading body {
+  overflow: hidden;
+}
+
+html:not(.loaded) .hero-content,
+html:not(.loaded) .nav {
+  opacity: 0;
+}
+
+html.loaded .nav {
+  animation: slideDown 0.6s var(--ease-out) both;
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 /* Skip to content - Accessibility */
 .skip-link {
   position: absolute;
@@ -319,8 +355,10 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   transition: width 0.3s var(--ease-out);
 }
 
-.nav-links a:not(.nav-cta):hover::after { width: 100%; }
-.nav-links a:hover { color: var(--c-text); }
+.nav-links a:not(.nav-cta):hover::after,
+.nav-links a:not(.nav-cta).active::after { width: 100%; }
+.nav-links a:hover,
+.nav-links a.active { color: var(--c-text); }
 
 .nav-cta {
   font-size: 13px !important;
@@ -828,6 +866,54 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 
 .product-link:hover { gap: 12px; }
 
+.product-status {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border-radius: 100px;
+  z-index: 2;
+}
+
+.product-status--live {
+  background: rgba(22, 163, 74, 0.1);
+  color: #16A34A;
+  border: 1px solid rgba(22, 163, 74, 0.2);
+}
+
+.product-status--live::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #16A34A;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.product-status--beta {
+  background: rgba(234, 179, 8, 0.1);
+  color: #CA8A04;
+  border: 1px solid rgba(234, 179, 8, 0.2);
+}
+
+[data-theme="dark"] .product-status--live {
+  background: rgba(22, 163, 74, 0.15);
+  border-color: rgba(22, 163, 74, 0.3);
+}
+
+[data-theme="dark"] .product-status--beta {
+  background: rgba(234, 179, 8, 0.15);
+  border-color: rgba(234, 179, 8, 0.3);
+  color: #EAB308;
+}
+
 .product-visual {
   position: relative;
   overflow: hidden;
@@ -888,10 +974,33 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 
 .amogha-bar {
   height: 6px;
-  background: rgba(196, 80, 26, 0.12);
+  background: rgba(196, 80, 26, 0.06);
   border-radius: 3px;
   margin-bottom: 6px;
+  position: relative;
+  overflow: hidden;
 }
+
+.amogha-bar::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0%;
+  background: rgba(196, 80, 26, 0.25);
+  border-radius: 3px;
+  transition: width 1.2s var(--ease-out);
+}
+
+.product-card--amogha.visible .amogha-bar::after {
+  width: 100%;
+}
+
+.product-card--amogha.visible .amogha-bar:nth-child(3)::after { transition-delay: 0.15s; }
+.product-card--amogha.visible .amogha-bar:nth-child(4)::after { transition-delay: 0.3s; }
+
+[data-theme="dark"] .amogha-bar::after { background: rgba(232, 120, 63, 0.35); }
 
 [data-theme="dark"] .amogha-bar { background: rgba(232, 120, 63, 0.2); }
 
@@ -1480,6 +1589,9 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 }
 
 .form-error.visible { display: block; }
+
+/* Honeypot - anti-spam */
+.form-hp { position: absolute; left: -9999px; opacity: 0; height: 0; width: 0; overflow: hidden; }
 
 .contact-info-items {
   display: flex;
@@ -2346,6 +2458,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 
       <!-- AMOGHA -->
       <article class="product-card product-card--amogha reveal reveal-delay-1">
+        <span class="product-status product-status--live">Live</span>
         <div class="product-info">
           <div class="product-icon" aria-hidden="true">
             <svg viewBox="0 0 24 24"><path d="M18 8h1a4 4 0 010 8h-1M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8zM6 1v3M10 1v3M14 1v3"/><path d="M6 1v3M10 1v3M14 1v3" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
@@ -2393,6 +2506,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 
       <!-- ARTIGEN -->
       <article class="product-card product-card--artigen reveal reveal-delay-2">
+        <span class="product-status product-status--beta">Beta</span>
         <div class="product-info">
           <div class="product-icon" aria-hidden="true">
             <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20 10 10 0 000-20z"/><circle cx="8" cy="10" r="2"/><circle cx="16" cy="10" r="2"/><circle cx="12" cy="16" r="2"/><circle cx="12" cy="6" r="1.5"/></svg>
@@ -2429,6 +2543,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 
       <!-- SBA -->
       <article class="product-card product-card--sba reveal reveal-delay-3">
+        <span class="product-status product-status--live">Live</span>
         <div class="product-info">
           <div class="product-icon" aria-hidden="true">
             <svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M7 17l4-8 4 4 5-10" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -2773,8 +2888,12 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
           <input type="hidden" name="subject" value="New contact from officethree.com">
           <input type="hidden" name="from_name" value="Officethree Website">
           <input type="hidden" name="redirect" value="https://officethree.com/#contact">
-          <!-- Honeypot spam protection -->
+          <!-- Honeypot spam protection (Web3Forms built-in + custom) -->
           <input type="checkbox" name="botcheck" class="hidden" style="display:none">
+          <div class="form-hp" aria-hidden="true">
+            <label for="website">Website</label>
+            <input type="text" id="website" name="website" tabindex="-1" autocomplete="off" />
+          </div>
           <div class="form-row">
             <div class="form-group">
               <label class="form-label" for="name">Full Name</label>
@@ -2928,10 +3047,29 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
     this.setAttribute('aria-label', next === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
   });
 
-  // ─── Nav scroll effect ───
+  // ─── Page load animation ───
+  requestAnimationFrame(function() {
+    document.documentElement.classList.add('loaded');
+  });
+
+  // ─── Scroll progress bar ───
+  var scrollProgress = document.getElementById('scrollProgress');
+
+  // ─── Nav scroll effect + progress ───
   var nav = document.getElementById('nav');
+  var ticking = false;
   window.addEventListener('scroll', function() {
-    nav.classList.toggle('scrolled', window.scrollY > 40);
+    if (!ticking) {
+      requestAnimationFrame(function() {
+        nav.classList.toggle('scrolled', window.scrollY > 40);
+        // Scroll progress
+        var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        var scrolled = (window.scrollY / docHeight) * 100;
+        scrollProgress.style.width = scrolled + '%';
+        ticking = false;
+      });
+      ticking = true;
+    }
   }, { passive: true });
 
   // ─── Mobile nav ───
@@ -2957,6 +3095,35 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
       document.body.style.overflow = '';
     });
   });
+
+  // ─── Active nav section highlighting ───
+  var navLinksAll = document.querySelectorAll('.nav-links a:not(.nav-cta)');
+  var sectionIds = ['products', 'process', 'about'];
+  var sectionObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        var id = entry.target.getAttribute('id');
+        navLinksAll.forEach(function(link) {
+          link.classList.toggle('active', link.getAttribute('href') === '#' + id);
+        });
+      }
+    });
+  }, { threshold: 0.2, rootMargin: '-80px 0px -50% 0px' });
+
+  sectionIds.forEach(function(id) {
+    var section = document.getElementById(id);
+    if (section) sectionObserver.observe(section);
+  });
+
+  // ─── Hero mouse parallax ───
+  var heroBg = document.querySelector('.hero-bg');
+  if (heroBg && window.innerWidth > 900) {
+    document.addEventListener('mousemove', function(e) {
+      var x = (e.clientX / window.innerWidth - 0.5) * 20;
+      var y = (e.clientY / window.innerHeight - 0.5) * 20;
+      heroBg.style.transform = 'translate(' + x + 'px, ' + y + 'px)';
+    });
+  }
 
   // ─── Scroll reveal ───
   var revealObserver = new IntersectionObserver(function(entries) {
@@ -2991,6 +3158,18 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   window.addEventListener('scroll', function() {
     backToTop.classList.toggle('visible', window.scrollY > 500);
   }, { passive: true });
+
+  // ─── Animated bar fills for product cards ───
+  var productCards = document.querySelectorAll('.product-card');
+  var barObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        barObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.3 });
+  productCards.forEach(function(card) { barObserver.observe(card); });
 
   backToTop.addEventListener('click', function() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -3055,8 +3234,14 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
     emailError.classList.remove('visible');
   }
 
+  var honeypot = document.getElementById('website');
+
   form.addEventListener('submit', function(e) {
     e.preventDefault();
+
+    // Honeypot anti-spam check
+    if (honeypot && honeypot.value) return;
+
     clearErrors();
 
     var valid = true;
