@@ -4,16 +4,19 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Officethree Technologies — Building Products That Matter</title>
-<meta name="description" content="Officethree Technologies Private Limited — a product studio building intelligent software across restaurants, creative AI, and sports analytics.">
+<meta name="description" content="Officethree Technologies Private Limited — a product studio building intelligent software across restaurants, creative AI, and sports analytics. 3 live products, 10+ platform surfaces.">
 <meta name="robots" content="index, follow">
+<meta name="author" content="Officethree Technologies Private Limited">
+<meta name="keywords" content="product studio, software development, restaurant tech, AI art, sports analytics, India">
 <link rel="canonical" href="https://officethree.com">
 
 <!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:title" content="Officethree Technologies — Building Products That Matter">
-<meta property="og:description" content="A product studio building intelligent software across restaurants, creative AI, and sports analytics.">
+<meta property="og:description" content="A product studio building intelligent software across restaurants, creative AI, and sports analytics. 3 live products powering real businesses.">
 <meta property="og:url" content="https://officethree.com">
 <meta property="og:site_name" content="Officethree Technologies">
+<meta property="og:locale" content="en_IN">
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
@@ -22,27 +25,86 @@
 
 <!-- Favicon -->
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='4' fill='%231B4D3E'/%3E%3Cpath d='M12 4L6 7.5v9L12 20l6-3.5v-9L12 4zm0 1.8L16 8v8l-4 2.3L8 16V8l4-2.2z' fill='white'/%3E%3C/svg%3E">
-<meta name="theme-color" content="#1B4D3E">
+<meta name="theme-color" content="#1B4D3E" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0F0F0F" media="(prefers-color-scheme: dark)">
 
-<!-- Structured Data -->
+<!-- Structured Data: Organization -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Organization",
   "name": "Officethree Technologies Private Limited",
   "url": "https://officethree.com",
+  "logo": "https://officethree.com/logo.svg",
   "description": "A product studio building intelligent software across restaurants, creative AI, and sports analytics.",
   "email": "hello@officethree.com",
+  "foundingDate": "2024",
+  "numberOfEmployees": {"@type": "QuantitativeValue", "minValue": 2, "maxValue": 10},
   "address": {
     "@type": "PostalAddress",
     "addressCountry": "IN"
   },
-  "sameAs": ["https://github.com/MukundaKatta"]
+  "sameAs": ["https://github.com/MukundaKatta"],
+  "knowsAbout": ["Software Development", "Restaurant Technology", "AI Art Generation", "Sports Analytics", "Machine Learning"]
+}
+</script>
+
+<!-- Structured Data: WebSite -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Officethree Technologies",
+  "url": "https://officethree.com",
+  "description": "A product studio building intelligent software across restaurants, creative AI, and sports analytics."
+}
+</script>
+
+<!-- Structured Data: FAQ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What does Officethree Technologies build?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Officethree Technologies is a product studio that builds intelligent software across three domains: restaurant operations (Amogha), AI-powered creative tools (Artigen), and sports analytics. We design, engineer, and ship production-grade products."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is Amogha?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Amogha is a full-stack restaurant operations platform with 10+ surfaces including online ordering, dine-in QR, kitchen display, POS, delivery app, kiosk, and admin analytics. Built on Firebase with Razorpay payments and Gemini AI."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What technologies does Officethree use?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We use React, Next.js, TypeScript, Firebase, Node.js, Gemini AI, XGBoost, and Razorpay among others. We choose technologies for reliability, developer velocity, and long-term maintainability."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How can I work with Officethree Technologies?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You can reach us at hello@officethree.com for partnerships and inquiries, or careers@officethree.com for job opportunities. We are based in India and work with clients globally."
+      }
+    }
+  ]
 }
 </script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Playfair+Display:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Playfair+Display:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 /* ═══════════════════════════════════════════
@@ -489,7 +551,17 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 
 .hero-title em {
   font-style: italic;
-  color: var(--c-accent);
+  background: linear-gradient(135deg, var(--c-accent) 0%, #3DD9A0 50%, var(--c-accent-light) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+[data-theme="dark"] .hero-title em {
+  background: linear-gradient(135deg, #3DD9A0 0%, #5EEDB8 50%, #8CF5D2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .hero-subtitle {
@@ -1532,6 +1604,318 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 
 .footer-bottom-links a:hover { color: var(--c-text); }
 
+/* ═══════════════════════════════════════════
+   TRUSTED BY / LOGO BAR
+   ═══════════════════════════════════════════ */
+.trusted {
+  padding: 56px 0;
+  border-bottom: 1px solid var(--c-border);
+  background: var(--c-bg);
+  overflow: hidden;
+}
+
+.trusted-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--c-text-tertiary);
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.trusted-logos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 48px;
+  flex-wrap: wrap;
+}
+
+.trusted-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--c-text-tertiary);
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+  white-space: nowrap;
+}
+
+.trusted-logo:hover { opacity: 1; }
+
+.trusted-logo-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+/* ═══════════════════════════════════════════
+   IMPACT METRICS
+   ═══════════════════════════════════════════ */
+.metrics {
+  background: var(--c-bg-alt);
+  padding: 80px 0;
+  position: relative;
+}
+
+.metrics::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--c-border);
+}
+
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+}
+
+.metric-card {
+  text-align: center;
+  padding: 32px 16px;
+  background: var(--c-bg-card);
+  border: 1px solid var(--c-border);
+  border-radius: 16px;
+  transition: all 0.3s var(--ease-out);
+}
+
+.metric-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--c-accent);
+}
+
+.metric-value {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 4vw, 3rem);
+  font-weight: 700;
+  color: var(--c-accent);
+  letter-spacing: -0.03em;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.metric-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--c-text-secondary);
+}
+
+.metric-sublabel {
+  font-size: 12px;
+  color: var(--c-text-tertiary);
+  margin-top: 4px;
+}
+
+/* ═══════════════════════════════════════════
+   FAQ SECTION
+   ═══════════════════════════════════════════ */
+.faq {
+  background: var(--c-bg);
+  position: relative;
+}
+
+.faq::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--c-border);
+}
+
+.faq-header {
+  text-align: center;
+  margin-bottom: 56px;
+}
+
+.faq-header .section-desc {
+  margin: 0 auto;
+}
+
+.faq-grid {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.faq-item {
+  background: var(--c-bg-card);
+  border: 1px solid var(--c-border);
+  border-radius: 14px;
+  overflow: hidden;
+  transition: all 0.3s var(--ease-out);
+}
+
+.faq-item:hover {
+  border-color: var(--c-text-tertiary);
+}
+
+.faq-question {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--c-text);
+  text-align: left;
+  gap: 16px;
+  transition: color 0.2s;
+}
+
+.faq-question:hover {
+  color: var(--c-accent);
+}
+
+.faq-chevron {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  transition: transform 0.3s var(--ease-out);
+  color: var(--c-text-tertiary);
+}
+
+.faq-item.open .faq-chevron {
+  transform: rotate(180deg);
+  color: var(--c-accent);
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s var(--ease-out), padding 0.3s var(--ease-out);
+}
+
+.faq-item.open .faq-answer {
+  max-height: 300px;
+}
+
+.faq-answer-inner {
+  padding: 0 24px 20px;
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--c-text-secondary);
+}
+
+/* ═══════════════════════════════════════════
+   CTA BANNER
+   ═══════════════════════════════════════════ */
+.cta-banner {
+  padding: 100px 0;
+  background: var(--c-bg-alt);
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-banner::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--c-border);
+}
+
+.cta-banner-inner {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.cta-banner-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 400px;
+  background: radial-gradient(circle, var(--c-accent-glow) 0%, transparent 65%);
+  border-radius: 50%;
+  z-index: 0;
+  opacity: 0.6;
+}
+
+.cta-banner-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  color: var(--c-text);
+  margin-bottom: 16px;
+}
+
+.cta-banner-desc {
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--c-text-secondary);
+  margin-bottom: 36px;
+  max-width: 520px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cta-banner-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+/* ═══════════════════════════════════════════
+   NEWSLETTER
+   ═══════════════════════════════════════════ */
+.newsletter-form {
+  display: flex;
+  gap: 10px;
+  max-width: 440px;
+  margin: 24px auto 0;
+}
+
+.newsletter-input {
+  flex: 1;
+  font-family: var(--font-body);
+  font-size: 14px;
+  padding: 12px 18px;
+  border: 1px solid var(--c-border);
+  border-radius: 10px;
+  background: var(--c-bg-card);
+  color: var(--c-text);
+  outline: none;
+  transition: all 0.25s;
+}
+
+.newsletter-input:focus {
+  border-color: var(--c-accent);
+  box-shadow: 0 0 0 3px var(--c-accent-glow);
+}
+
+.newsletter-input::placeholder {
+  color: var(--c-text-tertiary);
+}
+
 /* Back to top */
 .back-to-top {
   position: fixed;
@@ -1601,6 +1985,10 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   .process-grid { grid-template-columns: repeat(2, 1fr); gap: 32px; }
   .process-grid::before { display: none; }
   .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+  .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+  .trusted-logos { gap: 32px; }
+  .cta-banner-actions { flex-direction: column; }
+  .newsletter-form { flex-direction: column; }
 }
 
 @media (max-width: 640px) {
@@ -1617,6 +2005,9 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   .process-grid { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: 1fr; gap: 24px; }
   .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
+  .metrics-grid { grid-template-columns: 1fr 1fr; }
+  .trusted-logos { gap: 24px; }
+  .trusted-logo { font-size: 13px; }
 }
 
 /* ═══════════════════════════════════════════
@@ -1707,6 +2098,39 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
           <div class="hero-stat-value">2,000+</div>
           <div class="hero-stat-label">Automated Tests</div>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ TRUSTED BY ════════════ -->
+<section class="trusted reveal" aria-label="Trusted technologies and partners">
+  <div class="container">
+    <div class="trusted-label">Built With & Trusted By</div>
+    <div class="trusted-logos">
+      <div class="trusted-logo">
+        <span class="trusted-logo-icon" aria-hidden="true">&#128293;</span>
+        Firebase
+      </div>
+      <div class="trusted-logo">
+        <span class="trusted-logo-icon" aria-hidden="true">&#9889;</span>
+        Next.js
+      </div>
+      <div class="trusted-logo">
+        <span class="trusted-logo-icon" aria-hidden="true">&#129302;</span>
+        Gemini AI
+      </div>
+      <div class="trusted-logo">
+        <span class="trusted-logo-icon" aria-hidden="true">&#128171;</span>
+        Razorpay
+      </div>
+      <div class="trusted-logo">
+        <span class="trusted-logo-icon" aria-hidden="true">&#9883;</span>
+        React
+      </div>
+      <div class="trusted-logo">
+        <span class="trusted-logo-icon" aria-hidden="true">&#128187;</span>
+        TypeScript
       </div>
     </div>
   </div>
@@ -1919,6 +2343,34 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   </div>
 </section>
 
+<!-- ════════════ IMPACT METRICS ════════════ -->
+<section class="metrics" aria-label="Impact metrics">
+  <div class="container">
+    <div class="metrics-grid">
+      <div class="metric-card reveal reveal-delay-1">
+        <div class="metric-value" data-counter="3">0</div>
+        <div class="metric-label">Live Products</div>
+        <div class="metric-sublabel">In production, serving users</div>
+      </div>
+      <div class="metric-card reveal reveal-delay-2">
+        <div class="metric-value" data-counter="10" data-suffix="+">0</div>
+        <div class="metric-label">Platform Surfaces</div>
+        <div class="metric-sublabel">Web, mobile, kiosk, POS, KDS</div>
+      </div>
+      <div class="metric-card reveal reveal-delay-3">
+        <div class="metric-value" data-counter="2000" data-suffix="+">0</div>
+        <div class="metric-label">Automated Tests</div>
+        <div class="metric-sublabel">CI/CD with full coverage</div>
+      </div>
+      <div class="metric-card reveal reveal-delay-4">
+        <div class="metric-value" data-counter="99.9" data-suffix="%" data-decimal="true">0</div>
+        <div class="metric-label">Uptime SLA</div>
+        <div class="metric-sublabel">Production reliability target</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ════════════ PROCESS ════════════ -->
 <section class="section process" id="process" aria-labelledby="process-title">
   <div class="container">
@@ -2029,6 +2481,83 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
             <div class="testimonial-role">Sports Analytics Enthusiast</div>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ FAQ ════════════ -->
+<section class="section faq" id="faq" aria-labelledby="faq-title">
+  <div class="container">
+    <div class="faq-header reveal">
+      <div class="section-label">FAQ</div>
+      <h2 class="section-title" id="faq-title">Frequently asked questions</h2>
+      <p class="section-desc">Everything you need to know about Officethree Technologies and our products.</p>
+    </div>
+    <div class="faq-grid">
+      <div class="faq-item reveal reveal-delay-1">
+        <button class="faq-question" aria-expanded="false">
+          What does Officethree Technologies build?
+          <svg class="faq-chevron" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">We are a product studio that builds intelligent software across three domains: restaurant operations (Amogha), AI-powered creative tools (Artigen), and sports analytics. We design, engineer, and ship production-grade products from the ground up.</div>
+        </div>
+      </div>
+      <div class="faq-item reveal reveal-delay-1">
+        <button class="faq-question" aria-expanded="false">
+          What is Amogha and how does it work?
+          <svg class="faq-chevron" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Amogha is a full-stack restaurant operations platform with 10+ surfaces including online ordering, dine-in QR codes, kitchen display, POS terminal, delivery app, self-service kiosk, and an admin analytics dashboard. It's built on Firebase with Razorpay payments and Gemini AI integration.</div>
+        </div>
+      </div>
+      <div class="faq-item reveal reveal-delay-2">
+        <button class="faq-question" aria-expanded="false">
+          What technologies do you use?
+          <svg class="faq-chevron" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">We use React, Next.js, TypeScript, Firebase, Node.js, Gemini AI, XGBoost, and Razorpay among others. We choose technologies for reliability, developer velocity, and long-term maintainability — not hype.</div>
+        </div>
+      </div>
+      <div class="faq-item reveal reveal-delay-2">
+        <button class="faq-question" aria-expanded="false">
+          How can I work with Officethree Technologies?
+          <svg class="faq-chevron" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Reach us at hello@officethree.com for partnerships and inquiries, or careers@officethree.com for job opportunities. We're based in India and work with clients globally. You can also use the contact form on this page.</div>
+        </div>
+      </div>
+      <div class="faq-item reveal reveal-delay-3">
+        <button class="faq-question" aria-expanded="false">
+          Do you take on client projects?
+          <svg class="faq-chevron" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Our primary focus is on our own products, but we're open to strategic partnerships and collaborations where there's a strong domain fit. Get in touch to explore possibilities.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ CTA BANNER ════════════ -->
+<section class="cta-banner" aria-label="Call to action">
+  <div class="cta-banner-glow" aria-hidden="true"></div>
+  <div class="container">
+    <div class="cta-banner-inner reveal">
+      <div class="section-label">Get Started</div>
+      <h2 class="cta-banner-title">Ready to build something <em style="font-style: italic; color: var(--c-accent);">meaningful</em>?</h2>
+      <p class="cta-banner-desc">Whether you're looking to partner, collaborate, or just want to learn more about what we're building — let's connect.</p>
+      <div class="cta-banner-actions">
+        <a href="#contact" class="btn btn-primary">
+          Start a conversation
+          <svg class="btn-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="mailto:hello@officethree.com" class="btn btn-secondary">Email us directly</a>
       </div>
     </div>
   </div>
@@ -2153,6 +2682,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
         <ul class="footer-col-links">
           <li><a href="mailto:hello@officethree.com">hello@officethree.com</a></li>
           <li><a href="https://github.com/MukundaKatta" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+          <li><a href="#faq">FAQ</a></li>
         </ul>
       </div>
     </div>
@@ -2315,6 +2845,62 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   // Clear errors on input
   nameInput.addEventListener('input', function() { nameError.classList.remove('visible'); });
   emailInput.addEventListener('input', function() { emailError.classList.remove('visible'); });
+
+  // ─── Animated counters ───
+  var counterObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        var el = entry.target;
+        var target = parseFloat(el.getAttribute('data-counter'));
+        var suffix = el.getAttribute('data-suffix') || '';
+        var isDecimal = el.getAttribute('data-decimal') === 'true';
+        var duration = 2000;
+        var startTime = null;
+
+        function animate(timestamp) {
+          if (!startTime) startTime = timestamp;
+          var progress = Math.min((timestamp - startTime) / duration, 1);
+          // Ease out cubic
+          var eased = 1 - Math.pow(1 - progress, 3);
+          var current = eased * target;
+          if (isDecimal) {
+            el.textContent = current.toFixed(1) + suffix;
+          } else {
+            el.textContent = Math.floor(current).toLocaleString() + suffix;
+          }
+          if (progress < 1) {
+            requestAnimationFrame(animate);
+          }
+        }
+        requestAnimationFrame(animate);
+        counterObserver.unobserve(el);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  document.querySelectorAll('[data-counter]').forEach(function(el) {
+    counterObserver.observe(el);
+  });
+
+  // ─── FAQ Accordion ───
+  document.querySelectorAll('.faq-question').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var item = btn.closest('.faq-item');
+      var isOpen = item.classList.contains('open');
+
+      // Close all others
+      document.querySelectorAll('.faq-item.open').forEach(function(openItem) {
+        if (openItem !== item) {
+          openItem.classList.remove('open');
+          openItem.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      // Toggle current
+      item.classList.toggle('open');
+      btn.setAttribute('aria-expanded', String(!isOpen));
+    });
+  });
 
   // ─── Escape key closes mobile menu ───
   document.addEventListener('keydown', function(e) {
