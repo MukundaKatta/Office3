@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Page Not Found — Officethree Technologies</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='4' fill='%231B4D3E'/%3E%3Cpath d='M12 4L6 7.5v9L12 20l6-3.5v-9L12 4zm0 1.8L16 8v8l-4 2.3L8 16V8l4-2.2z' fill='white'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --c-bg: #FAFAF8;
+  --c-text: #1A1A1A;
+  --c-text-secondary: #5A5A5A;
+  --c-accent: #1B4D3E;
+  --c-accent-light: #2A7D62;
+  --c-border: #E4E3DF;
+}
+[data-theme="dark"] {
+  --c-bg: #0F0F0F;
+  --c-text: #F0F0F0;
+  --c-text-secondary: #A8A8A8;
+  --c-accent: #3DD9A0;
+  --c-accent-light: #5EEDB8;
+  --c-border: #2A2A2A;
+}
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { -webkit-font-smoothing: antialiased; }
+body {
+  font-family: 'DM Sans', -apple-system, sans-serif;
+  background: var(--c-bg);
+  color: var(--c-text);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 32px;
+  transition: background 0.4s, color 0.4s;
+}
+a { color: inherit; text-decoration: none; }
+.container { max-width: 520px; }
+.error-code {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(5rem, 15vw, 10rem);
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  background: linear-gradient(135deg, var(--c-accent), var(--c-accent-light));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 16px;
+}
+.error-title {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  letter-spacing: -0.02em;
+}
+.error-desc {
+  font-size: 16px;
+  color: var(--c-text-secondary);
+  line-height: 1.7;
+  margin-bottom: 36px;
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 14px 28px;
+  border-radius: 10px;
+  color: #fff;
+  background: var(--c-accent);
+  box-shadow: 0 2px 12px rgba(27, 77, 62, 0.25);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+[data-theme="dark"] .btn { color: #0F0F0F; }
+.btn:hover {
+  background: var(--c-accent-light);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(27, 77, 62, 0.3);
+}
+.btn svg { transition: transform 0.3s; }
+.btn:hover svg { transform: translateX(3px); }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="error-code">404</div>
+  <h1 class="error-title">Page not found</h1>
+  <p class="error-desc">The page you're looking for doesn't exist or has been moved. Let's get you back on track.</p>
+  <a href="/" class="btn">
+    Back to home
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </a>
+</div>
+<script>
+  if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+  }
+</script>
+</body>
+</html>
