@@ -1,0 +1,1444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Officethree Technologies — Building Products That Matter</title>
+<meta name="description" content="Officethree Technologies Private Limited — a product studio building intelligent software across restaurants, creative AI, and sports analytics.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Playfair+Display:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════
+   CSS VARIABLES & RESET
+   ═══════════════════════════════════════════ */
+:root {
+  --c-bg: #FAFAF8;
+  --c-bg-alt: #F2F1ED;
+  --c-bg-card: #FFFFFF;
+  --c-text: #1A1A1A;
+  --c-text-secondary: #5A5A5A;
+  --c-text-tertiary: #8A8A8A;
+  --c-accent: #1B4D3E;
+  --c-accent-light: #2A7D62;
+  --c-accent-glow: rgba(27, 77, 62, 0.08);
+  --c-border: #E4E3DF;
+  --c-border-light: #EDECE8;
+  --c-product-amogha: #C4501A;
+  --c-product-artigen: #5B2D8E;
+  --c-product-sba: #0F5FA6;
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: 'DM Sans', -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.03);
+  --shadow-md: 0 4px 20px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.04);
+  --shadow-lg: 0 12px 40px rgba(0,0,0,0.08), 0 4px 12px rgba(0,0,0,0.04);
+  --shadow-xl: 0 20px 60px rgba(0,0,0,0.1), 0 8px 20px rgba(0,0,0,0.05);
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--c-bg);
+  color: var(--c-text);
+  line-height: 1.65;
+  overflow-x: hidden;
+}
+
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; }
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+/* ═══════════════════════════════════════════
+   NAVIGATION
+   ═══════════════════════════════════════════ */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 0 32px;
+  transition: all 0.4s var(--ease-out);
+}
+
+.nav.scrolled {
+  background: rgba(250, 250, 248, 0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--c-border-light);
+}
+
+.nav-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 72px;
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.nav-logo {
+  width: 36px;
+  height: 36px;
+  background: var(--c-accent);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-logo::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, transparent 50%);
+}
+
+.nav-logo svg { width: 20px; height: 20px; fill: #fff; position: relative; z-index: 1; }
+
+.nav-wordmark {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 17px;
+  letter-spacing: -0.02em;
+  color: var(--c-text);
+}
+
+.nav-wordmark span {
+  color: var(--c-text-tertiary);
+  font-weight: 400;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--c-text-secondary);
+  transition: color 0.25s;
+  letter-spacing: 0.01em;
+}
+
+.nav-links a:hover { color: var(--c-text); }
+
+.nav-cta {
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  color: #fff !important;
+  background: var(--c-accent);
+  padding: 9px 22px;
+  border-radius: 8px;
+  transition: all 0.25s var(--ease-out);
+  box-shadow: 0 2px 8px rgba(27, 77, 62, 0.2);
+}
+
+.nav-cta:hover {
+  background: var(--c-accent-light);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(27, 77, 62, 0.28);
+}
+
+/* Mobile nav */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  padding: 4px;
+}
+
+.nav-toggle span {
+  width: 22px;
+  height: 2px;
+  background: var(--c-text);
+  border-radius: 2px;
+  transition: all 0.3s var(--ease-out);
+}
+
+/* ═══════════════════════════════════════════
+   HERO SECTION
+   ═══════════════════════════════════════════ */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  padding: 120px 0 80px;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.hero-bg::before {
+  content: '';
+  position: absolute;
+  top: -30%;
+  right: -20%;
+  width: 900px;
+  height: 900px;
+  background: radial-gradient(circle, var(--c-accent-glow) 0%, transparent 65%);
+  border-radius: 50%;
+  animation: heroGlow 8s ease-in-out infinite alternate;
+}
+
+.hero-bg::after {
+  content: '';
+  position: absolute;
+  bottom: -20%;
+  left: -15%;
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(circle, rgba(91, 45, 142, 0.04) 0%, transparent 65%);
+  border-radius: 50%;
+  animation: heroGlow 10s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes heroGlow {
+  0% { transform: scale(1) translate(0, 0); }
+  100% { transform: scale(1.1) translate(20px, -15px); }
+}
+
+.hero-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--c-border-light) 1px, transparent 1px),
+    linear-gradient(90deg, var(--c-border-light) 1px, transparent 1px);
+  background-size: 80px 80px;
+  opacity: 0.4;
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 20%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 20%, transparent 80%);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 780px;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px 6px 8px;
+  background: var(--c-bg-card);
+  border: 1px solid var(--c-border);
+  border-radius: 100px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--c-text-secondary);
+  margin-bottom: 32px;
+  box-shadow: var(--shadow-sm);
+  animation: fadeUp 0.8s var(--ease-out) both;
+}
+
+.hero-badge-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--c-accent);
+  position: relative;
+}
+
+.hero-badge-dot::after {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  background: var(--c-accent);
+  opacity: 0.3;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 0.3; }
+  50% { transform: scale(1.5); opacity: 0; }
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 6vw, 4.5rem);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: var(--c-text);
+  margin-bottom: 28px;
+  animation: fadeUp 0.8s var(--ease-out) 0.1s both;
+}
+
+.hero-title em {
+  font-style: italic;
+  color: var(--c-accent);
+}
+
+.hero-subtitle {
+  font-size: 19px;
+  line-height: 1.7;
+  color: var(--c-text-secondary);
+  max-width: 560px;
+  margin-bottom: 44px;
+  animation: fadeUp 0.8s var(--ease-out) 0.2s both;
+}
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  animation: fadeUp 0.8s var(--ease-out) 0.3s both;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 14px 28px;
+  border-radius: 10px;
+  transition: all 0.3s var(--ease-out);
+}
+
+.btn-primary {
+  color: #fff;
+  background: var(--c-accent);
+  box-shadow: 0 2px 12px rgba(27, 77, 62, 0.25);
+}
+
+.btn-primary:hover {
+  background: var(--c-accent-light);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(27, 77, 62, 0.3);
+}
+
+.btn-secondary {
+  color: var(--c-text);
+  background: var(--c-bg-card);
+  border: 1px solid var(--c-border);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-secondary:hover {
+  border-color: var(--c-text-tertiary);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-arrow {
+  transition: transform 0.3s var(--ease-out);
+}
+
+.btn:hover .btn-arrow { transform: translateX(3px); }
+
+.hero-stats {
+  display: flex;
+  gap: 48px;
+  margin-top: 72px;
+  padding-top: 40px;
+  border-top: 1px solid var(--c-border-light);
+  animation: fadeUp 0.8s var(--ease-out) 0.45s both;
+}
+
+.hero-stat-value {
+  font-family: var(--font-display);
+  font-size: 32px;
+  font-weight: 600;
+  color: var(--c-text);
+  letter-spacing: -0.02em;
+}
+
+.hero-stat-label {
+  font-size: 13px;
+  color: var(--c-text-tertiary);
+  margin-top: 4px;
+  letter-spacing: 0.02em;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ═══════════════════════════════════════════
+   SECTION COMMONS
+   ═══════════════════════════════════════════ */
+.section {
+  padding: 120px 0;
+}
+
+.section-label {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--c-accent);
+  margin-bottom: 16px;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  color: var(--c-text);
+  margin-bottom: 16px;
+}
+
+.section-desc {
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--c-text-secondary);
+  max-width: 560px;
+}
+
+/* ═══════════════════════════════════════════
+   PRODUCTS SECTION
+   ═══════════════════════════════════════════ */
+.products {
+  background: var(--c-bg);
+}
+
+.products-header {
+  margin-bottom: 64px;
+}
+
+.products-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.product-card {
+  background: var(--c-bg-card);
+  border: 1px solid var(--c-border);
+  border-radius: 20px;
+  overflow: hidden;
+  transition: all 0.4s var(--ease-out);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 400px;
+  position: relative;
+}
+
+.product-card:hover {
+  border-color: var(--c-text-tertiary);
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-4px);
+}
+
+.product-info {
+  padding: 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.product-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+  position: relative;
+}
+
+.product-icon svg {
+  width: 26px;
+  height: 26px;
+  position: relative;
+  z-index: 1;
+}
+
+.product-icon::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 14px;
+  opacity: 0.1;
+}
+
+.product-card--amogha .product-icon { background: rgba(196, 80, 26, 0.1); }
+.product-card--amogha .product-icon svg { fill: var(--c-product-amogha); }
+.product-card--amogha .product-tag { background: rgba(196, 80, 26, 0.08); color: var(--c-product-amogha); }
+
+.product-card--artigen .product-icon { background: rgba(91, 45, 142, 0.1); }
+.product-card--artigen .product-icon svg { fill: var(--c-product-artigen); }
+.product-card--artigen .product-tag { background: rgba(91, 45, 142, 0.08); color: var(--c-product-artigen); }
+
+.product-card--sba .product-icon { background: rgba(15, 95, 166, 0.1); }
+.product-card--sba .product-icon svg { fill: var(--c-product-sba); }
+.product-card--sba .product-tag { background: rgba(15, 95, 166, 0.08); color: var(--c-product-sba); }
+
+.product-name {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin-bottom: 8px;
+}
+
+.product-tag {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  padding: 4px 12px;
+  border-radius: 100px;
+  margin-bottom: 20px;
+  width: fit-content;
+}
+
+.product-desc {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--c-text-secondary);
+  margin-bottom: 28px;
+}
+
+.product-features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 32px;
+}
+
+.product-feature {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--c-text-secondary);
+  background: var(--c-bg-alt);
+  padding: 6px 14px;
+  border-radius: 100px;
+  border: 1px solid var(--c-border-light);
+}
+
+.product-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--c-accent);
+  transition: gap 0.3s var(--ease-out);
+}
+
+.product-link:hover { gap: 12px; }
+
+.product-visual {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.product-visual-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+}
+
+/* Amogha visual */
+.product-card--amogha .product-visual {
+  background: linear-gradient(145deg, #FFF5EE 0%, #FFECD9 100%);
+}
+
+.amogha-mockup {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  width: 100%;
+  max-width: 380px;
+}
+
+.amogha-surface {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(196, 80, 26, 0.12);
+  border-radius: 12px;
+  padding: 16px;
+  backdrop-filter: blur(8px);
+  transition: transform 0.3s var(--ease-out);
+}
+
+.product-card--amogha:hover .amogha-surface { transform: translateY(-2px); }
+
+.amogha-surface-label {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--c-product-amogha);
+  margin-bottom: 10px;
+}
+
+.amogha-bar {
+  height: 6px;
+  background: rgba(196, 80, 26, 0.12);
+  border-radius: 3px;
+  margin-bottom: 6px;
+}
+
+.amogha-bar:nth-child(2) { width: 85%; }
+.amogha-bar:nth-child(3) { width: 65%; }
+.amogha-bar:nth-child(4) { width: 75%; }
+
+.amogha-surface--wide {
+  grid-column: span 2;
+}
+
+/* Artigen visual */
+.product-card--artigen .product-visual {
+  background: linear-gradient(145deg, #F5EEFF 0%, #EDE0FF 100%);
+}
+
+.artigen-mockup {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  width: 100%;
+  max-width: 340px;
+}
+
+.artigen-tile {
+  aspect-ratio: 1;
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.4s var(--ease-out);
+}
+
+.product-card--artigen:hover .artigen-tile { transform: scale(1.03); }
+
+.artigen-tile:nth-child(1) { background: linear-gradient(135deg, #A855F7, #6D28D9); }
+.artigen-tile:nth-child(2) { background: linear-gradient(135deg, #8B5CF6, #4F46E5); border-radius: 50%; }
+.artigen-tile:nth-child(3) { background: linear-gradient(135deg, #C084FC, #9333EA); }
+.artigen-tile:nth-child(4) { background: linear-gradient(135deg, #D946EF, #A855F7); border-radius: 12px 12px 50% 12px; }
+.artigen-tile:nth-child(5) { background: linear-gradient(135deg, #7C3AED, #5B21B6); grid-column: span 1; grid-row: span 1; }
+.artigen-tile:nth-child(6) { background: linear-gradient(135deg, #9333EA, #6D28D9); border-radius: 50% 12px 12px 12px; }
+
+.artigen-tile::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 40%, rgba(0,0,0,0.15));
+}
+
+/* SBA visual */
+.product-card--sba .product-visual {
+  background: linear-gradient(145deg, #EEF4FF 0%, #DBE8FF 100%);
+}
+
+.sba-mockup {
+  width: 100%;
+  max-width: 360px;
+  background: rgba(255,255,255,0.9);
+  border: 1px solid rgba(15, 95, 166, 0.12);
+  border-radius: 14px;
+  padding: 24px;
+  backdrop-filter: blur(8px);
+}
+
+.sba-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.sba-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--c-product-sba);
+}
+
+.sba-badge {
+  font-size: 10px;
+  font-weight: 700;
+  color: #16A34A;
+  background: rgba(22, 163, 74, 0.1);
+  padding: 3px 10px;
+  border-radius: 100px;
+}
+
+.sba-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.sba-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  background: rgba(15, 95, 166, 0.03);
+  border-radius: 8px;
+  border: 1px solid rgba(15, 95, 166, 0.06);
+  transition: transform 0.3s var(--ease-out);
+}
+
+.product-card--sba:hover .sba-row { transform: translateX(2px); }
+
+.sba-row-team {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--c-text);
+}
+
+.sba-row-odds {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--c-product-sba);
+}
+
+.sba-row-ev {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  color: #16A34A;
+  background: rgba(22, 163, 74, 0.08);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+/* ═══════════════════════════════════════════
+   ABOUT SECTION
+   ═══════════════════════════════════════════ */
+.about {
+  background: var(--c-bg-alt);
+  position: relative;
+  overflow: hidden;
+}
+
+.about::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--c-border);
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.about-text { max-width: 520px; }
+
+.about-body {
+  font-size: 16px;
+  line-height: 1.8;
+  color: var(--c-text-secondary);
+  margin-top: 24px;
+}
+
+.about-body + .about-body { margin-top: 16px; }
+
+.about-values {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.about-value {
+  background: var(--c-bg-card);
+  border: 1px solid var(--c-border);
+  border-radius: 16px;
+  padding: 28px;
+  transition: all 0.3s var(--ease-out);
+}
+
+.about-value:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+.about-value-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: var(--c-accent-glow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+  font-size: 18px;
+}
+
+.about-value-title {
+  font-weight: 600;
+  font-size: 15px;
+  margin-bottom: 6px;
+  letter-spacing: -0.01em;
+}
+
+.about-value-desc {
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--c-text-tertiary);
+}
+
+/* ═══════════════════════════════════════════
+   CONTACT SECTION
+   ═══════════════════════════════════════════ */
+.contact {
+  background: var(--c-bg);
+  position: relative;
+}
+
+.contact::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--c-border);
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.form-group { display: flex; flex-direction: column; gap: 6px; }
+
+.form-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--c-text);
+  letter-spacing: 0.01em;
+}
+
+.form-input,
+.form-textarea {
+  font-family: var(--font-body);
+  font-size: 14px;
+  padding: 12px 16px;
+  border: 1px solid var(--c-border);
+  border-radius: 10px;
+  background: var(--c-bg-card);
+  color: var(--c-text);
+  transition: all 0.25s;
+  outline: none;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  border-color: var(--c-accent);
+  box-shadow: 0 0 0 3px var(--c-accent-glow);
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.form-submit {
+  align-self: flex-start;
+}
+
+.contact-info-items {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding-top: 12px;
+}
+
+.contact-item {
+  display: flex;
+  gap: 16px;
+}
+
+.contact-item-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: var(--c-accent-glow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.contact-item-icon svg {
+  width: 20px;
+  height: 20px;
+  fill: var(--c-accent);
+}
+
+.contact-item-label {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--c-text-tertiary);
+  margin-bottom: 4px;
+}
+
+.contact-item-value {
+  font-size: 15px;
+  color: var(--c-text);
+  font-weight: 500;
+}
+
+.contact-item-value a {
+  color: var(--c-accent);
+  transition: color 0.2s;
+}
+
+.contact-item-value a:hover { color: var(--c-accent-light); }
+
+/* ═══════════════════════════════════════════
+   FOOTER
+   ═══════════════════════════════════════════ */
+.footer {
+  padding: 48px 0;
+  border-top: 1px solid var(--c-border);
+  background: var(--c-bg);
+}
+
+.footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footer-copy {
+  font-size: 13px;
+  color: var(--c-text-tertiary);
+}
+
+.footer-links {
+  display: flex;
+  gap: 28px;
+  list-style: none;
+}
+
+.footer-links a {
+  font-size: 13px;
+  color: var(--c-text-tertiary);
+  transition: color 0.2s;
+}
+
+.footer-links a:hover { color: var(--c-text); }
+
+/* ═══════════════════════════════════════════
+   SCROLL ANIMATIONS
+   ═══════════════════════════════════════════ */
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+
+/* ═══════════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════════ */
+@media (max-width: 900px) {
+  .product-card { grid-template-columns: 1fr; min-height: auto; }
+  .product-visual { min-height: 280px; }
+  .about-grid { grid-template-columns: 1fr; gap: 48px; }
+  .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+  .hero-stats { gap: 32px; flex-wrap: wrap; }
+}
+
+@media (max-width: 640px) {
+  .container { padding: 0 20px; }
+  .section { padding: 80px 0; }
+  .nav-links { display: none; }
+  .nav-toggle { display: flex; }
+  .hero { padding: 100px 0 60px; }
+  .hero-actions { flex-direction: column; align-items: flex-start; }
+  .product-info { padding: 32px; }
+  .form-row { grid-template-columns: 1fr; }
+  .about-values { grid-template-columns: 1fr; }
+  .footer-inner { flex-direction: column; gap: 16px; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- ════════════ NAVIGATION ════════════ -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-brand">
+      <div class="nav-logo">
+        <svg viewBox="0 0 24 24"><path d="M12 2L4 7v10l8 5 8-5V7l-8-5zm0 2.18L18 8v8l-6 3.72L6 16V8l6-3.82z"/><path d="M12 8v8M8 10v4M16 10v4" stroke="#fff" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+      </div>
+      <span class="nav-wordmark">Officethree <span>Technologies</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#products">Products</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact" class="nav-cta">Get in Touch</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ════════════ HERO ════════════ -->
+<section class="hero" id="hero">
+  <div class="hero-bg">
+    <div class="hero-grid"></div>
+  </div>
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="hero-badge-dot"></span>
+        Officethree Technologies Pvt. Ltd.
+      </div>
+      <h1 class="hero-title">Building products<br>that <em>matter</em></h1>
+      <p class="hero-subtitle">We design, engineer, and ship intelligent software products — from restaurant operations and creative AI to sports analytics. Real problems. Thoughtful solutions.</p>
+      <div class="hero-actions">
+        <a href="#products" class="btn btn-primary">
+          Explore our products
+          <svg class="btn-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="#contact" class="btn btn-secondary">Contact us</a>
+      </div>
+      <div class="hero-stats">
+        <div>
+          <div class="hero-stat-value">3</div>
+          <div class="hero-stat-label">Live Products</div>
+        </div>
+        <div>
+          <div class="hero-stat-value">10+</div>
+          <div class="hero-stat-label">Platform Surfaces</div>
+        </div>
+        <div>
+          <div class="hero-stat-value">2,000+</div>
+          <div class="hero-stat-label">Automated Tests</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ PRODUCTS ════════════ -->
+<section class="section products" id="products">
+  <div class="container">
+    <div class="products-header reveal">
+      <div class="section-label">Our Products</div>
+      <h2 class="section-title">Software that works where it matters</h2>
+      <p class="section-desc">Each product is purpose-built for its domain — combining deep understanding of the problem space with modern engineering.</p>
+    </div>
+
+    <div class="products-grid">
+
+      <!-- AMOGHA -->
+      <div class="product-card product-card--amogha reveal reveal-delay-1">
+        <div class="product-info">
+          <div class="product-icon">
+            <svg viewBox="0 0 24 24"><path d="M18 8h1a4 4 0 010 8h-1M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8zM6 1v3M10 1v3M14 1v3"/><path d="M6 1v3M10 1v3M14 1v3" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+          </div>
+          <div class="product-tag">Restaurant Tech</div>
+          <h3 class="product-name">Amogha Cafe & Restaurant</h3>
+          <p class="product-desc">A full-stack restaurant operations platform — 10 surfaces covering online ordering, dine-in QR, kitchen display, POS, delivery, kiosk, and admin analytics. Built on Firebase with Razorpay payments and Gemini AI.</p>
+          <div class="product-features">
+            <span class="product-feature">Customer Ordering</span>
+            <span class="product-feature">Kitchen Display</span>
+            <span class="product-feature">POS Terminal</span>
+            <span class="product-feature">Delivery App</span>
+            <span class="product-feature">QR Dine-In</span>
+            <span class="product-feature">Self-Service Kiosk</span>
+          </div>
+          <a href="https://amoghahotels.com" target="_blank" class="product-link">
+            Visit amoghahotels.com
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+        <div class="product-visual">
+          <div class="product-visual-inner">
+            <div class="amogha-mockup">
+              <div class="amogha-surface">
+                <div class="amogha-surface-label">Orders</div>
+                <div class="amogha-bar" style="width:90%"></div>
+                <div class="amogha-bar" style="width:70%"></div>
+                <div class="amogha-bar" style="width:80%"></div>
+              </div>
+              <div class="amogha-surface">
+                <div class="amogha-surface-label">Kitchen</div>
+                <div class="amogha-bar" style="width:60%"></div>
+                <div class="amogha-bar" style="width:95%"></div>
+                <div class="amogha-bar" style="width:45%"></div>
+              </div>
+              <div class="amogha-surface amogha-surface--wide">
+                <div class="amogha-surface-label">Analytics Dashboard</div>
+                <div class="amogha-bar" style="width:100%"></div>
+                <div class="amogha-bar" style="width:88%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ARTIGEN -->
+      <div class="product-card product-card--artigen reveal reveal-delay-2">
+        <div class="product-info">
+          <div class="product-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20 10 10 0 000-20z"/><circle cx="8" cy="10" r="2"/><circle cx="16" cy="10" r="2"/><circle cx="12" cy="16" r="2"/><circle cx="12" cy="6" r="1.5"/></svg>
+          </div>
+          <div class="product-tag">Creative AI</div>
+          <h3 class="product-name">Artigen</h3>
+          <p class="product-desc">An AI-powered art community for creating, sharing, and discovering generative art. Combines multi-model AI tools with a full social platform, creator economy, and personalized discovery.</p>
+          <div class="product-features">
+            <span class="product-feature">Text-to-Image</span>
+            <span class="product-feature">ControlNet</span>
+            <span class="product-feature">3D Generation</span>
+            <span class="product-feature">Social Feed</span>
+            <span class="product-feature">Marketplace</span>
+            <span class="product-feature">Communities</span>
+          </div>
+          <a href="https://github.com/MukundaKatta/artigen" target="_blank" class="product-link">
+            View on GitHub
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+        <div class="product-visual">
+          <div class="product-visual-inner">
+            <div class="artigen-mockup">
+              <div class="artigen-tile"></div>
+              <div class="artigen-tile"></div>
+              <div class="artigen-tile"></div>
+              <div class="artigen-tile"></div>
+              <div class="artigen-tile"></div>
+              <div class="artigen-tile"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SBA -->
+      <div class="product-card product-card--sba reveal reveal-delay-3">
+        <div class="product-info">
+          <div class="product-icon">
+            <svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M7 17l4-8 4 4 5-10" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="product-tag">Sports Analytics</div>
+          <h3 class="product-name">Sports Betting Analytics</h3>
+          <p class="product-desc">A quantitative edge-finding engine that aggregates odds from 20+ sportsbooks, runs XGBoost ML models on player props, and surfaces +EV opportunities with Kelly criterion sizing in real time.</p>
+          <div class="product-features">
+            <span class="product-feature">Edge Finder</span>
+            <span class="product-feature">XGBoost ML</span>
+            <span class="product-feature">Prop Analyzer</span>
+            <span class="product-feature">Live Monitor</span>
+            <span class="product-feature">Kelly Sizing</span>
+            <span class="product-feature">Line Movement</span>
+          </div>
+          <a href="#contact" class="product-link">
+            Request access
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+        <div class="product-visual">
+          <div class="product-visual-inner">
+            <div class="sba-mockup">
+              <div class="sba-header">
+                <span class="sba-label">Live Edge Scanner</span>
+                <span class="sba-badge">+EV Found</span>
+              </div>
+              <div class="sba-rows">
+                <div class="sba-row">
+                  <span class="sba-row-team">LAL vs BOS</span>
+                  <span class="sba-row-odds">+142</span>
+                  <span class="sba-row-ev">+6.3% EV</span>
+                </div>
+                <div class="sba-row">
+                  <span class="sba-row-team">MIL vs PHI</span>
+                  <span class="sba-row-odds">-118</span>
+                  <span class="sba-row-ev">+4.1% EV</span>
+                </div>
+                <div class="sba-row">
+                  <span class="sba-row-team">J. Tatum Pts</span>
+                  <span class="sba-row-odds">O 27.5 -110</span>
+                  <span class="sba-row-ev">+5.8% EV</span>
+                </div>
+                <div class="sba-row">
+                  <span class="sba-row-team">GSW vs DEN</span>
+                  <span class="sba-row-odds">+195</span>
+                  <span class="sba-row-ev">+3.7% EV</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ ABOUT ════════════ -->
+<section class="section about" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <div class="section-label">About Us</div>
+        <h2 class="section-title">Engineering with purpose</h2>
+        <p class="about-body">Officethree Technologies is a product studio based in India. We build and operate software products across domains — from restaurant operations and creative AI to sports analytics.</p>
+        <p class="about-body">Every product we ship is built from the ground up: designed, engineered, tested, and deployed by our team. We believe in shipping quality, owning the full stack, and solving real problems with thoughtful technology.</p>
+      </div>
+      <div class="about-values reveal reveal-delay-1">
+        <div class="about-value">
+          <div class="about-value-icon">&#9670;</div>
+          <div class="about-value-title">Full-Stack Ownership</div>
+          <div class="about-value-desc">From database schemas to pixel-perfect UI — we own every layer of the products we build.</div>
+        </div>
+        <div class="about-value">
+          <div class="about-value-icon">&#9700;</div>
+          <div class="about-value-title">Production-Grade</div>
+          <div class="about-value-desc">2,000+ automated tests, CI/CD pipelines, monitoring — our products are built to run reliably.</div>
+        </div>
+        <div class="about-value">
+          <div class="about-value-icon">&#9671;</div>
+          <div class="about-value-title">AI-Augmented</div>
+          <div class="about-value-desc">Machine learning and generative AI are woven into every product where they add genuine value.</div>
+        </div>
+        <div class="about-value">
+          <div class="about-value-icon">&#9701;</div>
+          <div class="about-value-title">Domain-Driven</div>
+          <div class="about-value-desc">We go deep on the problem space before writing code. Understanding the domain is the foundation.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ CONTACT ════════════ -->
+<section class="section contact" id="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="reveal">
+        <div class="section-label">Contact</div>
+        <h2 class="section-title">Let's build something together</h2>
+        <p class="section-desc" style="margin-bottom: 36px;">Have a question about our products, want to explore a partnership, or just want to say hello? We'd love to hear from you.</p>
+        <div class="contact-form" id="contactForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="name">Full Name</label>
+              <input class="form-input" type="text" id="name" placeholder="Your name" />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="email">Email Address</label>
+              <input class="form-input" type="email" id="email" placeholder="you@company.com" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="subject">Subject</label>
+            <input class="form-input" type="text" id="subject" placeholder="What's this about?" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="message">Message</label>
+            <textarea class="form-textarea" id="message" placeholder="Tell us more..."></textarea>
+          </div>
+          <button class="btn btn-primary form-submit" type="button" onclick="handleSubmit()">
+            Send Message
+            <svg class="btn-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="reveal reveal-delay-1">
+        <div class="contact-info-items">
+          <div class="contact-item">
+            <div class="contact-item-icon">
+              <svg viewBox="0 0 24 24"><path d="M3 8l9 6 9-6M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            </div>
+            <div>
+              <div class="contact-item-label">Email</div>
+              <div class="contact-item-value"><a href="mailto:hello@officethree.com">hello@officethree.com</a></div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">
+              <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg>
+            </div>
+            <div>
+              <div class="contact-item-label">Registered Office</div>
+              <div class="contact-item-value">India</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">
+              <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm0 2a8 8 0 018 8 8 8 0 01-8 8 8 8 0 01-8-8 8 8 0 018-8z"/><path d="M2 12h20M12 2a15 15 0 014 10 15 15 0 01-4 10 15 15 0 01-4-10A15 15 0 0112 2z"/></svg>
+            </div>
+            <div>
+              <div class="contact-item-label">Web</div>
+              <div class="contact-item-value"><a href="#">officethree.com</a></div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">
+              <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 01-12 0 6 6 0 0112 0zM2 21a8 8 0 0116 0M17 11h6M20 8v6" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+            </div>
+            <div>
+              <div class="contact-item-label">Careers</div>
+              <div class="contact-item-value"><a href="mailto:careers@officethree.com">careers@officethree.com</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ FOOTER ════════════ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-copy">&copy; 2026 Officethree Technologies Private Limited. All rights reserved.</div>
+      <ul class="footer-links">
+        <li><a href="#products">Products</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<!-- ════════════ SCRIPTS ════════════ -->
+<script>
+// Nav scroll effect
+const nav = document.getElementById('nav');
+let lastScroll = 0;
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 40);
+  lastScroll = window.scrollY;
+}, { passive: true });
+
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Smooth scroll for nav links
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+
+// Contact form handler
+function handleSubmit() {
+  const btn = document.querySelector('.form-submit');
+  const name = document.getElementById('name').value;
+  const email = document.getElementById('email').value;
+  if (!name || !email) {
+    btn.textContent = 'Please fill in all fields';
+    setTimeout(() => { btn.innerHTML = 'Send Message <svg class="btn-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>'; }, 2000);
+    return;
+  }
+  btn.textContent = 'Message Sent!';
+  btn.style.background = '#16A34A';
+  setTimeout(() => {
+    btn.innerHTML = 'Send Message <svg class="btn-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+    btn.style.background = '';
+    document.getElementById('name').value = '';
+    document.getElementById('email').value = '';
+    document.getElementById('subject').value = '';
+    document.getElementById('message').value = '';
+  }, 2500);
+}
+
+// Mobile nav toggle
+document.getElementById('navToggle').addEventListener('click', function() {
+  const links = document.querySelector('.nav-links');
+  if (links.style.display === 'flex') {
+    links.style.display = 'none';
+  } else {
+    links.style.display = 'flex';
+    links.style.position = 'fixed';
+    links.style.top = '72px';
+    links.style.left = '0';
+    links.style.right = '0';
+    links.style.flexDirection = 'column';
+    links.style.background = 'rgba(250,250,248,0.98)';
+    links.style.padding = '24px 32px';
+    links.style.gap = '20px';
+    links.style.borderBottom = '1px solid var(--c-border)';
+    links.style.backdropFilter = 'blur(20px)';
+  }
+});
+</script>
+
+</body>
+</html>
