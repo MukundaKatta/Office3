@@ -1,5 +1,7 @@
 # Office3 — Officethree Technologies — building AI-powered products for small businesses
 
+**Live:** <http://o3labs.ai/>
+
 Officethree Technologies — building AI-powered products for small businesses. Office3 gives you a focused, inspectable implementation of that idea.
 
 ## Why Office3
